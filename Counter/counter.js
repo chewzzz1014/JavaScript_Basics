@@ -1,4 +1,3 @@
-
 var countEl = document.getElementById("count-el")
 var displayEl = document.getElementById("display-el")
 var count = 0
