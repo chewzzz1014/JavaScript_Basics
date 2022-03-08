@@ -1,5 +1,5 @@
 "use strict"
-//create object
+//create object and accessing its properties
 
 let user = {}; //object literal syntax
 let admin = new Object(); //object constructor syntax
