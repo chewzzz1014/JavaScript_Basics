@@ -1,3 +1,5 @@
+"use strict"
+
 function Cat (hasName=false){
 
     this.name =  "Meow Meow";
