@@ -1,3 +1,3 @@
 # JavaScript_Basics
 
-Starts my learning journey at [javascript.info](javascript.info). 
+[javascript.info](javascript.info) is my primary source of reference in learning JavaScript fundamental.
