@@ -1,3 +1,6 @@
+//contains some examples of uses of array methods
+
+
 //camelize string with dash-separated words
 
 function camelize(str){
