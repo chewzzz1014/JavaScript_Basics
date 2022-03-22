@@ -10,6 +10,17 @@ myMap.set(0, false)
 myMap.set("half", 0.5)
 myMap.set("Quarter", 0.25)
 myMap.set(person, "me")   //in map, object as key is allowed. object doesn't alllow this
+/*
+ //allowed too
+  myMap.set(4,"four")
+         .set(2,"two")
+         .set(1, true)
+        .set(0, false)
+        .set("half", 0.5)
+        ("Quarter", 0.25)
+        (person, "me")
+
+*/
 
 alert(`Value of key "half" in myMap is ${myMap.get("half")}`)   //0.5
 alert(`Value of key "Quarter" in myMap is ${myMap.get("Quarter")}`)   //0.25
