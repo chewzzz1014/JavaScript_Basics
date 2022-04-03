@@ -99,7 +99,7 @@ alert(getSecondsToTomorrow());
 // format the relative date
 function formatDate(date){
   let now = new Date();
-  let passed = now-date;    // time differences in milliseconds
+  let passed = now-date;    // time differences in milliseconds. Not going to convert to seconds here to avoid loss of precision
 
   if (passed<1000)    // less than 1 seconds or 1000 milliseconds
     return "right now";
