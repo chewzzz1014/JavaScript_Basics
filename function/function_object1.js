@@ -37,7 +37,7 @@ function sum(n){
     return f;
   };
 
-  f.toString = () => currentSum;    //return the currentSum. Object to primitive conversion
+  f.toString = () => currentSum;    //return the currentSum. Object to primitive conversion where hint is "string"
 
   return f;   //return in first execution only (first argument of sum())
 }
