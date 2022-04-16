@@ -38,7 +38,7 @@ let title = ["owner", "food"];
 
 for (let i=0; i<2; i++){
   alert("About "+ title[i]);
-  for (let key in myCat[title[i]] )
+  for (let key of myCat[title[i]] )
     { alert( key +": "+ myCat[title[i]][key]); }
 }
 
