@@ -44,3 +44,13 @@ let worker = {
 // use func.call(obj, arg1, arg2...)
 slow = cachingDecorator(slow);
 alert(slow.call(worker, 2));
+
+
+// another examples of func.call
+let me = {name: "chewzzz"};
+let you = {name:"Anonymous"};
+function sayHi(){
+  alert("Hi, "+this.name+"!");
+}
+sayHi.call(me);   // Hi, chewzzz!
+sayHi.call(you);  // Hi, anonymous!
