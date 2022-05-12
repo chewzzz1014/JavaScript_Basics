@@ -63,11 +63,10 @@ let eventMixin = {
   // eg: menu.off("select", handler)
   off(eventName, handler){
     let handler = this._eventHandlers?.[eventName];
-    if(!habdlers) return;
+    if(!handlers) return;
     for(let i=0;i<handlers.length; i++){
       if(handlers[i] === handler)
           handlers.splice(i--, 1);
-    }
   }
 },
 
@@ -80,3 +79,19 @@ let eventMixin = {
       this._eventHandlers[eventName].forEach(handler => handler.apply(this, args));
     }
   };
+
+
+// usage of eventMixin
+class Menu{
+  choose(value){
+    this.trigger("select", value);
+  }
+}
+
+Object.assign(Menu.prototype, eventMixin);
+
+let menu = new Menu();
+
+menu.on("select", value = > alert(`Value selected: ${value}`));
+
+menu.choose("123");
