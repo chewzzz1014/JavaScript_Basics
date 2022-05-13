@@ -101,3 +101,15 @@ try{
   timeTaken = Date.now() - start;
   alert(`The execution took ${timeTaken} ms.`);
 }
+
+
+// global check: handling error outside try block
+// in browser:
+window.onerror = function(msg, url, line, col, error){
+  alert(`${error}\n${msg} at line ${line} column ${col} from ${url}.`);
+}
+
+function readData(){
+  fgdghtyhtyjtj;
+}
+readData();   // error, window.onerror will be called
