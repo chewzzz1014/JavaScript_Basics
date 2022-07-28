@@ -21,4 +21,21 @@ alert(`You got ${classScored}`);
 
 
 let role = prompt("What is your role?")
-alert( (role==="User")? "Welcome!" : (role=="Developer")? "This is written in JavaScript!": "We don't know who you are :(")
+alert( (role==="User")? "Welcome!" : (role=="Developer")? "This is written in JavaScript!": "We don't know who you are :(");
+
+//////////////////////////
+let ans = prompt("What's the \"official\" name of JavaScript?", "");
+(ans==="ECMAScript")? alert("Right!") : alert("You don't know \"ECMAScript\"?");
+
+/////////////////////
+let n = +prompt("Enter a number","0");
+(n>0)? alert(1) : (n<0)? alert(-1) : alert(0);
+
+////////////////////////
+let message
+let login = prompt("Your role");
+(login==="Employee")? message="Hello":
+(login==="Director")? message="Greetings":
+(login==="")? message="No login": message="";
+
+alert(message);
