@@ -1,3 +1,5 @@
 # JavaScript_Basics
 
-[javascript.info](javascript.info) is my primary source of reference in learning JavaScript fundamental.
+Learning Sources:
+ - [javascript.info](javascript.info)
+ - [Beginner's Series to: JavaScript](https://docs.microsoft.com/en-us/shows/beginners-series-to-javascript/?wt.mc_id=beginner-c9-niner) by Microsoft
