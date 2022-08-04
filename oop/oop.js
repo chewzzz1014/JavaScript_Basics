@@ -16,12 +16,23 @@ admin = {
 };
 
 //accesing values
+alert(admin.name);
 alert(admin["staff number"]);
 alert(admin["name"]);
 alert("age" in admin); //false
 
 //add key
 user["language"] = "JavaScript";
+
+// delete property
+delete admin["staff number"];
+
+// computed properties
+let vege = prompt("Pick one vegetable", "Cabbage");
+let grocery = {
+  [vege]: 3;  //name of property is taken from variable
+}
+slert(grpcery.Cabbage);
 
 //looping through object "user"
 for (let key in user){
