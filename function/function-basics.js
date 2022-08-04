@@ -10,6 +10,7 @@ function f(){
 f("wee"); // it's ok to pass argument to no-args function
 console.log(typeof f);
 
+// f1 did not return anything. The return value is undefined 
 function f1(name){
   console.log(`Nice to meet you, ${name}!`);
 }
