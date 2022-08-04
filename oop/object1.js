@@ -38,5 +38,5 @@ book.checkIn = function(){
 /*
   "this" keyword
   - for object method, refer to the enclosing Object
-  - for standalone function, refer to global object ("window" in browser runtime and "global" in node.js runtime)
+  - for standalone function, refer to global object ("window" in browser runtime and "global" in node.js runtime)(non-strict mode only)
 */
