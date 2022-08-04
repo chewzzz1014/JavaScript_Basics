@@ -21,6 +21,7 @@ alert(cat.owner && cat.owner.name && cat.owner.name.firstName);
 
 
 //alternative 3: optional chaining (?.)
+// Stops the evaluation if the value before ?. is undefine or null and then return undefined
 let cat = {
 
    owner :{
