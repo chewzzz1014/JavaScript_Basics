@@ -2,6 +2,7 @@
 
 //constructor of object
 
+// common agreement: constructor function name should be capitalized
 function Person(name, age){
   this.name = name;
   this.age = age;
@@ -15,7 +16,8 @@ function Person(name, age){
     alert("You born on "+ this.bornYear);
   }
 
-  this.greet(); //perform these 3 tasks whenever new object was created
+  //perform these 3 tasks whenever new object was created
+  this.greet();
   this.printAge();
   this.printYear();
 }
