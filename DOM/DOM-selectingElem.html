@@ -1,0 +1,116 @@
+<!-- Searching Elements Using getElement and querySelector -->
+
+
+<!--
+  ----------------------------------
+
+        document.getElementById(id)
+
+  ----------------------------------
+-->
+<div id="elem">
+    <div id="elem-content">
+      Element
+    </div>
+</div>
+
+<script>
+    // alternative 1: get the element by id
+    let elemBySelect =document.getElementById("elem");
+    // paint div's background into red
+    elemBySelect.style.background = "red";
+
+    // alternative 2: global variable named by id
+    // in this case, 'elem-content' can't be variable name but we can access it using 'window["elem-content"]'
+    // NOT RECOMMENDED
+    elem.style.background = "red";
+
+</script>
+
+<!--
+  ----------------------------------
+
+        elem.querySelectorAll(css)
+
+  ----------------------------------
+-->
+
+<ul>
+  <li>The</li>
+  <li>test</li>
+</ul>
+<ul>
+  <li>has</li>
+  <li>passed</li>
+</ul>
+
+<script>
+  // elem.querySelectorAll(css)
+  // return all elements inside elem matching the given CSS selector
+  let elements = document.querySelectorAll("ul > li:last-child");
+
+  for (let elem of elements)
+      console.log(elem.innerHTML);  // 'test', 'passed'
+</script>
+
+
+<!--
+  ----------------------------------
+
+            elem.matches(css)
+
+  ----------------------------------
+-->
+
+<a href="http://example.com/file.zip">...</a>
+<a href="http://ya.ru">...</a>
+
+<script>
+    for (let elem of document.body.children)
+    // check if elem matches the given CSS selector and return true/false
+      if (elem.matches('a[href$="zip"]'))
+        alert("Link is " + elem.href);
+</script>
+
+
+
+
+<!--
+  ----------------------------------
+
+            elem.closest(css)
+
+  ----------------------------------
+-->
+<h1>Contents</h1>
+
+<div class="contents">
+  <ul class="book">
+    <li class="chapter">Chapter 1</li>
+    <li class="chapter">Chapter 2</li>
+  </ul>
+</div>
+
+<script>
+  // look for the nearest ancestor that matches the CSS-selector
+    let chapter = document.querySelector(".chapter"); // LI
+
+    console.log(chapter.closest(".book"));  // UL
+    console.log(chapter.closest(".contents")) // DIV
+
+    console.log(chapter.closest("h1")); // null (h1 is not an ancestor)
+</script>
+
+
+
+
+
+<!--
+  ----------------------------------
+
+        document.getElementsByTagName(tag)
+        document.getElementsByClassName(className)
+        document.getElementsByName(name)
+
+  ----------------------------------
+-->
