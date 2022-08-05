@@ -87,6 +87,7 @@
   
 ## Table 
 - `table.rows` : Collection of `<tr>` element
+- `table.rows[i].cells[i]` : Specifying the coordinate of a cell at (rows[i], cells[i])
 - `table.caption/tHead/tFoot`: References to elements `<caption>`, `<thead>`, `<tfoot>`
 - `table.tBodies` : Collection of `<tbody>` element
 - `tr.cells` : the collection of <td> and <th> cells inside the given `<tr>`.
