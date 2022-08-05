@@ -132,5 +132,15 @@ Hierarchy of DOM nodes:
                  alert(news.textContent);
                </script>
                
-               
-              
+ ## Hidden property
+ - Specifies whether the element is visible or not
+                  
+                <div>Both divs below are hidden</div>
+
+               <div hidden>With the attribute "hidden"</div>
+
+               <div id="elem">JavaScript assigned the property "hidden"</div>
+
+               <script>
+                  elem.hidden = true;
+               </script>
