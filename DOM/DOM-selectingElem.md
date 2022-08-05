@@ -10,9 +10,38 @@
    - Return the first element inside elem that matches the given CSS selector.
 
 4. elem.matches(css)
-   - Return all the elements inside elem that matches the given CSS-selector
+   - Return all elements inside elem that matches the given CSS-selector
    - Eg, `elem.matches('a[href$="zip"]')` to find link with 'zip' in the href of a
 
 5. elem.closest(css)
    - Return the nearest ancestor that matches the CSS-selector
    - elem itself is included in the search
+   
+6. elem.getElementsByTagName(tag)
+   - Return all elements with the given tag and returns the collection of them. The tag parameter can also be a star "*" for “any tags”.
+   - Examples of tag: `<div>`, `<ul>` ...
+   
+7. elem.getElementsByClassName(className)
+   - Return all elements that have the given class name.
+   - Eg: 
+   
+            `<div class = "contents">`
+            .....
+            `let  articles = document.getElementsByClassName("contents");`
+   
+8. document.getElementsByName(name)
+   - Return all elements with the given name attribute, document-wide.
+   - Eg: 
+   
+            `<form name = "my-form">`
+            .....    
+            `let form = document.getElementsByName("my-form");`
+
+9. elemA.contains(elemB)
+   - Return true if `elemB` is inside `elemA` (elemB is descendant of elemA)
+   - elem itself is also checked 
+   
+## Live Collections
+- All methods `getElementsBy` return a live collection.
+- 'Live' means that it reflects the current state of the document and auto-update when it changes
+- However, `querySelectorAll` return a static collection.
