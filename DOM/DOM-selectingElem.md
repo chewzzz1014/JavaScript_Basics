@@ -45,3 +45,13 @@
 - All methods `getElementsBy` return a live collection.
 - 'Live' means that it reflects the current state of the document and auto-update when it changes
 - However, `querySelectorAll` return a static collection.
+
+
+## Example of CSS Selector for Searching Methods
+- `ul > li:last-child` : The last `<li>` nested inside `<ul>`
+- `a[href$="zip"]` : `a`'s `href` that contains the word 'zip'
+- `form[name="search"]` : `form`'s name that equal to the word 'search'
+- `.chapter` : Class name
+- `div` : Tag name
+- `input` : Name. Eg. `<form name = "my-form">`
+- `#age-table label` : label tag nested inside id age-table
