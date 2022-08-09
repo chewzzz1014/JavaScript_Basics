@@ -1,7 +1,13 @@
 "use strict"
 
 //declaration of symbol
-let id = Symbol("id");
+let id = Symbol("This is the description about the symbol i created...");
+
+// symbol don't auto-convert to string
+alert(id);  // TypeError: Cannot convert a Symbol value to a string
+
+// get the description of symbol
+console.log(id.description);
 
 //declare symbol as property of object
 let me = {
@@ -10,7 +16,7 @@ let me = {
 };
 
 //id is unique even they have the same decription
-let id2 = Symbol("id");
+let id2 = Symbol("This is the description about the symbol i created...");
 alert( id === id2); //false
 
 //id is ignored in iteration of object's properties and cloning of object (Object.assign())
