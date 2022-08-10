@@ -18,7 +18,7 @@ alert(myArr.shift()); //extract first element and return it
 
 
 //iterationg over elements in array
-for (let ele of myArr) //or for(let ele in myArr)
+for (let ele of myArr) //or for(let idx in myArr)
   alert(ele);
 
 myArr.forEach(function(ele){ alert(ele); } );
@@ -28,4 +28,4 @@ myArr.forEach(function(ele){ alert(ele); } );
 let anotherArray = ["a", 1234, true, {name:"zzz", age:20}, function(){alert("Hello");} ];
 
 anotherArray.length = 2 ; //truncate array. anotherArray contains 2 elements noew
-alert(anotherArray);
+alert(anotherArray);  // ["a", 1234]

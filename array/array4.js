@@ -169,7 +169,7 @@ shuffle(arr);
 //get average age
 
 function getAverageAge(arr){
-  return (  arr.reduce( (sum,item)=> sum+=item.age , 0 ) /3 ) ;
+  return (  arr.reduce( (sum,item)=> sum+=item.age , 0 ) /arr.length) ;
 }
 
 let john = { name: "John", age: 25 };
