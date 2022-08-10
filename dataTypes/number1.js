@@ -6,6 +6,7 @@ let HNum = 0xFF; //hexadecimal. or 0xFF
 
 //convert decimal to other number base system
 //all converted values are in string stype
+// num.toString(base)
 BNum = DNum.toString(2); //base 2
 ONum = DNum.toString(8); //base 8
 HNum = DNum.toString(16); //base 16
@@ -17,7 +18,12 @@ alert(Math.round(number1)); //34.3
 alert(Math.ceil(number1)); //35
 alert(Math.floor(number1)); //34
 alert(Math.trunc(number1)); //34 (remove decimal without rounding)
-alert(number1.toFixed(3)); //fixed to 3 decimal point. Return value in string type
+
+// toFixed always return string
+alert(number1.toFixed(3)); //fixed to 3 decimal point. '34.345' 
+123.toFixed(2); // ERROR!
+123..toFixed(2);  // '123.00'
+(123).toFixed(2); // '123.00'
 
 //some method from Math class
 alert(Math.random()); //generate random number. Range: 0<=n<1

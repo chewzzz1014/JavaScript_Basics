@@ -1,3 +1,9 @@
+// representing large number
+let billion = 1_000_000_000;
+let billion = 1e9;  // 1*(10^9)
+let price = 7.3e9; // 7.3*(10^9)
+let cheaperPrice = 1e-6;  // 1*(10^-6)
+
 //leading 0 and trailing 0 in decimal value is allowed
 var a = .89;
 var b = 98.;
