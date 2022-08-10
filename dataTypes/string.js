@@ -65,6 +65,10 @@ alert(~5) //-6
 //substring
 alert(str.slice(0,5)); //index 0 (inclusive) to 5 (exclusive)
 alert(str.slice(2)); //index 2 (inclusive) to the end of string
+
+// str.substring allows start > end
+str.substring(10, 5);
+
 alert(str.substring(5,10)) //index 5 (inclusive) to 10 (exclusive)
 alert(str.str(0,5)) //substring of length 5 starting from index 0
 
