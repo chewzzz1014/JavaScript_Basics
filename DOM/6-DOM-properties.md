@@ -53,14 +53,10 @@
   ## Accessing HTML Standard Attributes
  - HTML attributes are case-insensitive and their values are always strings.
  - `Attribute = name` and `Value of attribute = value`
- 
- 
-  |Method|Function|
-  |......|........|
-  |elem.hasAttribute(name)|Checks for existence of attribute|
-  |elem.getAttribute(name)| Gets the value of attribute |
-  |elem.setAttribute(name, value) | Sets the value of attribute|
-  |elem.removeAttribute(name) | Removes the attribute|
+ - `elem.hasAttribute(name)`: Checks for existence of attribute
+ - `elem.getAttribute(name)`:  Gets the value of attribute 
+ - `elem.setAttribute(name, value)`: Sets the value of attribute
+ - `elem.removeAttribute(name)`: Removes the attribute
   
   
        <body>
