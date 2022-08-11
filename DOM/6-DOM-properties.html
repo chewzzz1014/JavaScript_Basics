@@ -1,0 +1,40 @@
+<!-- Get the attribute of HTML tags -->
+<!DOCTYPE html>
+<html>
+<body>
+
+  <div data-widget-name="menu">Choose the genre</div>
+
+  <script>
+    let elem = document.querySelector("[data-widget-name]");
+
+    console.log(elem.getAttribute("data-widget-name"));
+
+    // or
+    console.log(elem.dataset.widgetName);
+  </script>
+</body>
+</html>
+
+
+
+<!-- Make all external links orange by altering their style property. -->
+<a name="list">the list</a>
+<ul>
+  <li><a href="http://google.com">http://google.com</a></li>
+  <li><a href="/tutorial">/tutorial.html</a></li>
+  <li><a href="local/path">local/path</a></li>
+  <li><a href="ftp://ftp.com/my.zip">ftp://ftp.com/my.zip</a></li>
+  <li><a href="http://nodejs.org">http://nodejs.org</a></li>
+  <li><a href="http://internal.com/test">http://internal.com/test</a></li>
+</ul>
+
+<script>
+  let selector = 'a[href*="://"]:not([href^="http://internal.com"])';
+let links = document.querySelectorAll(selector);
+
+links.forEach(link => link.style.color = 'orange');
+  // setting style for a single link
+  let link = document.querySelector('a');
+  link.style.color = 'orange';
+</script>
