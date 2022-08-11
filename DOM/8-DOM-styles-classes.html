@@ -1,0 +1,37 @@
+<!-- creates a notification: <div class="notification"> with the given content. -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+        function showNotification({
+          top = 0, right = 0, className, html
+        }){
+          let notification = document.createElement("div");
+          notification.className = "notification";
+          if (className)
+            notification.classList.add(className);
+
+          notification.style.top = top+"px";
+          notification.style.right = right+"px";
+
+          // apppear for 1.5 seconds
+          setTimeout(()=>notification.remove(), 1500);
+
+          // testing
+          let i = 1;
+          setInterval(()=>{
+            showNotification({
+              top: 10,
+              right: 10,
+              html: 'Hello' + i++,
+              className: "welcome"
+            });
+          }, 2000);
+
+    </script>
+  </body>
+</html>
