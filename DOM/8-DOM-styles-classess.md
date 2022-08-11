@@ -61,7 +61,7 @@
 ## getComputerStyle
 - The style property operates only on the value of the "style" attribute, without any CSS cascade.
 - So we can’t read anything that comes from CSS classes using elem.style.
-- `getComputedStyle(element, [pseudo])`: Get the style property 
+- `getComputedStyle(element, [pseudo])`: To read the resolved styles (with respect to all classes, after all CSS is applied and final values are calculated)
 - `element`: Element to read value for
 - `pseudo`:  A pseudo-element if required, for instance `::before`. Empty string or no argument means the element itself
 
