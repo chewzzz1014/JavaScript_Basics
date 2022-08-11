@@ -119,14 +119,90 @@
             </script>
  
  
+ ## DOM Properties are Typed
+ - DOM Properties are not always strings when accessing it using the object's property way
+ 
+           <input id="input" type="checkbox" checked> checkbox
+
+            <script>
+              alert(input.getAttribute('checked')); 
+              // the attribute value is: empty string
+              
+              alert(input.checked);
+              // the property value is: true
+            </script>
  
  
  
+             <div id="div" style="color:red;font-size:120%">Hello</div>
+
+            <script>
+              // string
+              alert(div.getAttribute('style')); // color:red;font-size:120%
+
+              // object
+              alert(div.style); // [object CSSStyleDeclaration]
+              alert(div.style.color); // red
+            </script>
+ 
+ ## Non-Standard Attributes
+ - Sometime non-standard attributes are used to pass custom data from HTML to JavaScript, or to "mark" HTML-elements for JavaScript
  
  
- 
- 
- 
- 
+           <div show-info="name"></div>
+           <div show-info="age"></div>
+           
+           <script>
+                 let user = {
+                     name: "chewzzz",
+                     age: 20
+                 };
+                 
+                 // substitue "name" with "chewzzz" and "age" with 20
+                 for (let div of document.querySelectorAll("[show-in]")){
+                 
+                        let field = div.getAttribute("show-info");
+                        
+                        div.innerHTML = user[field];
+                 }
+            </script>
+  
+ ## data-* Attributes
+- All attributes starting with “data-” are reserved for programmers’ use. They are available in the dataset property.
+- For instance, if an elem has an attribute named "data-about", it’s available as elem.dataset.about
+
+            
+            <body data-about="Elephants">
+               <script>
+                 alert(document.body.dataset.about); // Elephants
+               </script>
+               
+        
+             <style>
+                 .order[data-order-state="new"] {
+                   color: green;
+                 }
+
+                 .order[data-order-state="pending"] {
+                   color: blue;
+                 }
+
+                 .order[data-order-state="canceled"] {
+                   color: red;
+                 }
+            </style>
+
+            <div id="order" class="order" data-order-state="new">
+              A new order.
+            </div>
+
+            <script>
+              // read
+              alert(order.dataset.orderState); // new
+
+              // modify
+              order.dataset.orderState = "pending"; // (*)
+            </script>
+
  
  
