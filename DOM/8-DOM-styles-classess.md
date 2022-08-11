@@ -57,3 +57,25 @@
 
         document.body.style.margin = '20px';
         alert(document.body.style.margin); // 20px
+
+## getComputerStyle
+- The style property operates only on the value of the "style" attribute, without any CSS cascade.
+- So we can’t read anything that comes from CSS classes using elem.style.
+- `getComputedStyle(element, [pseudo])`: Get the style property 
+- `element`: Element to read value for
+- `pseudo`:  A pseudo-element if required, for instance `::before`. Empty string or no argument means the element itself
+
+
+            <head>
+              <style> body { color: red; margin: 5px } </style>
+            </head>
+            <body>
+                // can't access directly
+                alert(document.body.style.color);           // empty
+                alert(document.body.style.marginTop);      // empty
+
+                let computedStyle = getComputedStyle(document.body);
+                alert( computedStyle.marginTop );           // 5px
+                alert( computedStyle.color );        // rgb(255, 0, 0)
+
+            </body>
