@@ -48,13 +48,31 @@
                 div.setAttribute("style", "color: blue; background: white;");
                 
                 
+## Editing Attributes
+
+                div.setAttribute("id", "theDiv");
+                
+                div.getAttribute("id");
+                
+                div.removeAttribute("id");
+                
+## Working with Classes
+
+                div.classList.add("new");
+                
+                div.classList.remove("new");
+                
+                div.classList.toggle("active");
                 
                 
+## Adding Text Content
+  
+  
+                div.textContent = "Hello World";
                 
-                
-                
-                
-                
+## Adding HTML Content
+
+                div.innerHTML = "<span>Hello World!</span>";
                 
                 
                 
