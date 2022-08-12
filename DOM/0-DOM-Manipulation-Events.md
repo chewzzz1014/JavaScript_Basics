@@ -85,3 +85,29 @@
   
 ## Attach functions' attributes directly on HTML elements
 
+                <button id="btn">Click Me Too</button>
+                
+                <script>
+                    const btn = document.querySelector('#btn');
+                    btn.addEventListener('click', () => {
+                      alert("Hello World");
+                    });
+                    
+                    
+                    btn.addEventListener("click", greet);
+                    function greet(){ alert("Hiiii");  }
+                 </script>
+                
+ ## Callback               
+ - function(e) is a callback from addEventListener
+ - The `e` is an object that references the event itself               
+                
+                   // function (e) is a callback from addEventListener
+                    btn.addEventListener("click", function(e){
+                        console.log(e.target);  // [object HTMLButtonElement]
+                      });
+                      
+                    
+                    btn.addEventListener('click', function (e) {
+                    e.target.style.background = 'blue';
+                  });
