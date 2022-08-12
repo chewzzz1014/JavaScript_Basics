@@ -127,3 +127,9 @@
                           alert(button.id);
                       });
                   </script>
+
+## Some Other Events
+- click
+- dblclick
+- keydown
+- keyup
