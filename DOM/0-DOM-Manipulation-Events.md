@@ -75,4 +75,13 @@
                 div.innerHTML = "<span>Hello World!</span>";
                 
                 
-                
+## Events
+- Event: Actions that occure on the webpage
+- Ways to listen and react to events:
+  1. Attach functions' attributes directly on HTML elements
+  2. Set the "on_event" property on the DOM object in JS
+  3. Attach event listeners to nodes in JS
+  
+  
+## Attach functions' attributes directly on HTML elements
+
