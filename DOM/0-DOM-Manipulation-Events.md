@@ -111,3 +111,19 @@
                     btn.addEventListener('click', function (e) {
                     e.target.style.background = 'blue';
                   });
+
+## Attaching Listeners to Groups of Nodes
+- Use `querySelectorAll(css)` to get an iterable of all targets.
+
+                  <div id="container">
+                      <button id="1">Click Me</button>
+                      <button id="2">Click Me</button>
+                      <button id="3">Click Me</button>
+                  </div>
+                  
+                  <script>
+                      const buttons = document.querySelectorAll("button");
+                      buttons.forEach( (button) => {
+                          alert(button.id);
+                      });
+                  </script>
