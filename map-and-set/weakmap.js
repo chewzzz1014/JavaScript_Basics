@@ -1,4 +1,5 @@
 //normal map prevent garbage collection of key object but WeakMap doesn't
+// WeakMap can only have objects as keys
 
 //normal Map
 let obj = { name: "chewzzz", };
@@ -7,7 +8,7 @@ normalMap.set(obj, 1); //obj(an object) as key in normal map
 
 obj = null;   //overwrite the reference of object
 
-alert(normalMap.get(obj));    //obj can't be accessed this way. we het undefined
+alert(normalMap.get(obj));    //obj can't be accessed this way. we have undefined here.
 
 alert(normalMap.keys());
 for (let key of normalMap.keys())   //or access through this way
