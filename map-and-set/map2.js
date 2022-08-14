@@ -45,7 +45,8 @@ let arrayToMap = new Map(
 alert(arrayToMap);
 
 
-//passing object as ky value pairs of map
+//passing object as key value pairs of map
+// obj => map using Object.entries(obj)
 let person = {
   name : "chewzzz",
   age: 20,

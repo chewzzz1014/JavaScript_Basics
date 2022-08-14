@@ -1,4 +1,4 @@
-//Set in JavaScript
+//Set (of maths) in JavaScript which contains unique value only
 
 function createSetWithValues(){
 let mySet = new Set();
