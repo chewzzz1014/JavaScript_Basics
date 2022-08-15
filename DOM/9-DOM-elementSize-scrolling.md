@@ -45,3 +45,8 @@
             
 ## scrollLeft/scrollTop
 - Width/height of the hidden, scrolled out part of the element
+- scrollLeft/scrollTop can be modified. `elem.scrollTop +=` 10 makes the element content scroll 10px down.
+
+## Why avoid taking width/height from CSS
+- CSS width/height depend on box-sizing
+- CSS width/height may be auto, eg, an inline element
