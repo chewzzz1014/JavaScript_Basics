@@ -42,3 +42,23 @@
           let coords = elem.getBoundingClientRect();
           m.style.left = coords.left +  "px";
           m.style.right = coords.bottom + "px";
+
+
+## Document Coordinates
+- Start from the upper-left corner of the document
+- Similar to position:absolute on top
+- `pageY = clientY + height of the scrolled-out vertical part of the document`
+- `pageX = clientX + width of the scrolled-out vertical part of the document`
+
+
+          // get document coordinates of the element
+          function getCoords(elem) {
+            let box = elem.getBoundingClientRect();
+
+            return {
+              top: box.top + window.pageYOffset,
+              right: box.right + window.pageXOffset,
+              bottom: box.bottom + window.pageYOffset,
+              left: box.left + window.pageXOffset
+            };
+          }
