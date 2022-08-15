@@ -8,8 +8,12 @@ let [first, second ] = arr;
 alert(first);   //Hello
 alert(second);    //Worlds
 
+let [a, b, c] = "John Smith";
+console.log(a);  // J
+console.log(b);  // o
+console.log(c);  // h
 
-//"students" is an arrat that stores languages known by a student
+//"students" is an array that stores languages known by a student
 let state = "I knew Mandarin, Malay and English!";
 let students = state.split(" ");
 students = students.filter( (item,index)=> {
@@ -43,16 +47,16 @@ alert(Object.values(myLang_pro))
 let participants = ["dog","cat","wolf","rabbit","rooster"];
 let [first, second, third, ...rest] = participants
 
-alert(`First place goes to ... ${first}!`);
-alert(`Second place goes to ... ${second}!`);
-alert(`Third place goes to ... ${third}!`);
-alert(`Consolation prizes belong to ${rest}. Try it hard next year!`);
+alert(`First place goes to ... ${first}!`); // dog
+alert(`Second place goes to ... ${second}!`); // cat
+alert(`Third place goes to ... ${third}!`); // wolf
+alert(`Consolation prizes belong to ${rest[0]}. Try it hard next year!`);
 
 //set default values
 let [first="No one", second="No one", third="No one"] = [, 'Nick',];
-alert(`${first} receives the first prize.`);
-alert(`${second} receives the second prize.`);
-alert(`${third} receives the third prize.`);
+alert(`${first} receives the first prize.`);  //No one
+alert(`${second} receives the second prize.`);  // Nick
+alert(`${third} receives the third prize.`);  //No one
 
 // input-prompted values
 let [first=prompt("1st"), second=prompt("2nd"), third=prompt("3rd")] = [, 'Nick',];
@@ -70,6 +74,9 @@ let car = {
 };
 
 let {engine, model, carPlate} = car;    //will be assigned based on name
+alert(engine);  // V34Z
+alert(model); // Proton
+alert(carPlate);  // WER1234
 /*
 or
 
@@ -116,6 +123,7 @@ alert(yr);    //2019
 
 let user = { name: "John", years: 30 };
 
+// years's value to age...
 let {name, years:age, isAdmin=false} = user;
 
 alert( name ); // John
