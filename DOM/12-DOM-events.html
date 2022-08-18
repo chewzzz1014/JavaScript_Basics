@@ -1,0 +1,18 @@
+<!-- Click button to hide text -->
+
+<body>
+  <button>Click to hide the text</button>
+  <div id="text">Text</div>
+
+  <script>
+    let btn = document.body.querySelector("button");
+    let txt = document.body.querySelector("div");
+    btn.addEventListener("click", ()=>{txt.hidden=true});
+  </script>
+</body>
+
+
+<!-- Click a button to hide itself -->
+<body>
+  <button onclick="this.hidden=true">Click to hide</button>
+</body>
