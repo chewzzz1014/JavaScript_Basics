@@ -1,4 +1,4 @@
-## Browser Defaukt Actions
+## Browser Default Actions
 - Examples of default action in browser:
   - A click on a link – initiates navigation to its URL.
   - A click on a form submit button – initiates its submission to the server.
