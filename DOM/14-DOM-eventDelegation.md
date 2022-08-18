@@ -1,5 +1,9 @@
 ## Event Delegation
 - If we have a lot of elements handled in a similar way, then instead of assigning a handler to each of them – we put a single handler on their common ancestor.
+- `Algorithm`:
+   1. Put a single handler on the container.
+   2. In the handler – check the source element event.target.
+   3. If the event happened inside an element that interests us, then handle the event.
 - Examples, a table:
 
 ```
