@@ -139,14 +139,3 @@ class Menu{
     elem.addEvenListener('mousedown', menu);
     elem.addEventListener('mouseup', menu);
 </script>
-```
-
-
-
-
-
-
-
-
-
-
