@@ -6,7 +6,7 @@
 
 ## Preventing Browser Actions
 1. Use event object. The method `event.preventDefault()`
-2. If the handler is assigned using on<event> (not by addEventListener), then returning false also works the same.
+2. If the handler is assigned using on<event> (**not by addEventListener**), then returning false also works the same.
   
 ```
   // method 1
@@ -54,7 +54,7 @@
   </script>
 ```
   
-- There's the case where we need event.stopPropagation(). It stops the bubbling and oncontextmenu for document will not be executed 
+- There's the case where we need to check on event.defaultPrevented. If the default action was prevented, then the event is handled and we no need to react on it.
 ```
 <p>Right-click here for the document context menu</p>
 <button id="elem">Right-click here for the button context menu(fixed with event.stopPropagation)</button>
@@ -63,26 +63,16 @@
    // right click on element
    elem.oncontextmenu = function(event){
         event.preventDefault();       // won't show context menu after right click
-        event.stopPropagation();  // stop bubbling
         alert('Button context menu');
   };
     
   //right click on document
   document.oncontextmenu = function(event){
+        // are the default action prevented?
+        if (event.defaultPrevented) return;   
+        
         event.preventDefault();    // won't show context menu after right click
         alert('Document context menu');
   };
 </script>
 ```
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
