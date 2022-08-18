@@ -53,6 +53,7 @@
 
 3. addEventListener
 - `elem.addEventListener(event, handler, [options])`
+- `elem.removeEventListener(event, handler, [options])`
    - event: Event Name, eg, "click"
    - handler: Handler function
    - options:
@@ -60,6 +61,85 @@
      - `once`: if true,  then the listener is automatically removed after it triggers.
      - capture: the phase where to handle the event
      - passive: if true, then the handler will not call preventDefault()
+     
+- NOTE: `removeEventListener must refer to the exact function when it's added in addEventListener`
+
+```
+// DIFFERENT! Can't be removed
+elem.addEventListener( "click" , () => alert('Thanks!'));
+// ....
+elem.removeEventListener( "click", () => alert('Thanks!'));
+
+// SAME. Can be removed
+function handler() { alert("Thankssss"); }
+elem.addEventListener("click", handler);
+elem.removeEventListener("click", handler);
+```
+
+- Multiple handlers added =  Multiple function to be executed one by one when event is detected.
+
+
+## Event Object
+- When an event happens, the browser creates an event object, puts details into it and passes it as an argument to the handler.
+- Some properties of event object:
+  - `event.type`: Event type, eg, "click"
+  - `event.currentTarget`: Element that handled the event. The 'this', unless the handler is an arrow function.
+  - `event.clientX / event.clientY`: Window-relative coordinates of cursor for pointer events.
+
+```
+<input type="button" value="Click me" id="elem">
+
+<script>
+  elem.onclick = function(event) {
+    // show event type, element and coordinates of the click
+    
+    // click at [object HTMLInputElement]
+    alert(event.type + " at " + event.currentTarget);  
+    
+    // Coordinates: 57:19
+    alert("Coordinates: " + event.clientX + ":" + event.clientY);
+  };
+</script>
+```
+
+## Object handlers: handleEvent
+- Assign object to addEventListener. When event occurs, the obj's `handleEvent` method is called.
+
+```
+<button id="elem">Click me</button>
+
+<script>
+  let obj = {
+    handleEvent(event) {
+      alert(event.type + " at " + event.currentTarget);
+    }
+  };
+
+  elem.addEventListener('click', obj);
+</script>
+
+```
+
+```
+<button id="elem">Click Me</button>
+
+<script>
+class Menu{
+      handleEvent(event){
+       switch(event.type){
+         case 'mousedown':
+            elem.innerHTML = "Mouse button pressed";
+         case 'mouseup':
+            elem.innerHTML = "Mouse buttom released";
+          }
+       }
+    }
+    
+    let menu = new Menu();
+    elem.addEvenListener('mousedown', menu);
+    elem.addEventListener('mouseup', menu);
+</script>
+```
 
 
 
