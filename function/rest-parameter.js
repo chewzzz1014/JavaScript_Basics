@@ -26,6 +26,7 @@ function capitaliseAll(){
     capitalised.push(item);
 
   return capitalised.map( (item)=> item.toUpperCase() );
+  // or return Array.from(arguments).map((ele)=> ele.toUpperCase());
 }
 
 alert( capitaliseAll("what????", "are you sure", "hmmmm"));
