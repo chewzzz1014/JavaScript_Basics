@@ -85,22 +85,74 @@ alert(event.clientX);   // 100
 - For new, custom events, there are definitely no default browser actions, but a code that dispatches such event may have its own plans what to do after triggering the event.
 - By calling event.preventDefault(), an event handler may send a signal that those actions should be canceled.
 - In that case the call to elem.dispatchEvent(event) returns false. And the code that dispatched it knows that it shouldn’t continue. 
-- 
+- `cancelable` must set to true
+
+```
+<pre id="rabbit">
+  |\   /|
+   \|_|/
+   /. .\
+  =\_Y_/=
+   {>o<}
+</pre>
+<button onclick="hide()">Hide()</button>
+
+<script>
+   function hide(){
+      let event = new CustomEvent("hide", { cancelable: true} );
+      
+      // dispatchEvent() return false, indicating event.preventDefault() is called
+      if (!rabbit.dispatchEvent(event)
+            alert('The action was prevented by a handler');    // (1)
+      else
+            rabbit.hidden = true;
+      }
+      
+      rabbit.addEventListener("hide", function(event) {
+         if (confirm("Call preventDefault?"))      // (2)
+               event.preventDefault();
+      });
+```
 
 
+## Events-in-events are synchronous
+- Usually events are processed in a queue. That is: if the browser is processing onclick and a new event occurs, e.g. mouse moved, then its handling is queued up, corresponding mousemove handlers will be called after onclick processing is finished.
+- The notable exception is when one event is initiated from within another one, e.g. using dispatchEvent. Such events are processed immediately: the new event handlers are called, and then the current event handling is resumed.
+- Example below: menu-open event is triggered during the onclick. It’s processed immediately, without waiting for onclick handler to end
+```
+<button id="menu">Menu (click me)</button>
 
+<script>
+  menu.onclick = function() {
+    alert(1);     // (1)
 
+    menu.dispatchEvent(new CustomEvent("menu-open", {
+      bubbles: true
+    }));
 
+    alert(2);     // (3)
+  };
 
+  // triggers between 1 and 2
+  document.addEventListener('menu-open', () => alert('nested'));     // (2)
+</script>
+```
+- onclick to be fully processed first, independently from menu-open or any other nested events:
+```
+<button id="menu">Menu (click me)</button>
 
+<script>
+  menu.onclick = function() {
+    alert(1);
 
+    // wrap it in the zero-delay setTimeout
+    setTimeout(() => menu.dispatchEvent(new CustomEvent("menu-open", {
+      bubbles: true
+    })));
 
+    alert(2);
+  };
 
-
-
-
-
-
-
-
-
+  document.addEventListener('menu-open', () => alert('nested'));
+</script>
+```
