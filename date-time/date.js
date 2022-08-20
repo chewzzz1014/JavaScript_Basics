@@ -5,8 +5,8 @@ let now = new Date();
 alert(now)    //Wed Mar 23 2022 22:58:36 GMT+0800 (Malaysia Time)
 //display time when i was writing the code!
 
-let start = new Date(0);    //0 milliseconds from 1970, January 01
-alert(start);   //Thu Jan 01 1970 07:30:00 GMT+0730 (Malaysia Time)
+let start_time = new Date(0);    //0 milliseconds from 1970, January 01
+alert(start_time);   //Thu Jan 01 1970 07:30:00 GMT+0730 (Malaysia Time)
 
 let dateString = new Date ("2022-03-02");   // YYYY/MM/DD
 alert(dateString);
@@ -57,15 +57,15 @@ alert(+date);
 alert( +date === date.getTime() );    //true
 
 // keep track of time taken by a program to execute
+// no need to create intermediate Date object
+let start = Date.now();
 
-let start = new Date()
-
-let multiply = []
+let multiply = [];
 for (let i=1; i<=12; i++){
   for (let j=1; j<=12; j++)
     multiply.push(i*j);
 }
 
-let end = new Date()
+let end = Date.now();
 
 alert(`This process took ${(end-start)/1000} seconds!`);
