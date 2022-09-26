@@ -12,3 +12,9 @@
        - hello_world.js
      - Project2
        - greet.js
+
+3. app.js
+   - Import from a file:
+     - math.js
+   - Import the whole directory:
+     - pets (with index.js as main file)
