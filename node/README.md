@@ -22,4 +22,4 @@
 
 4. npm
    - Install npm packages in Jokester directory.
-   - index.js (in same dir as packages installed) will print colored random joke.
+   - Create new project in Artster that uses npm packages.
