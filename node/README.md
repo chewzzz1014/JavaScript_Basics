@@ -13,8 +13,13 @@
      - Project2
        - greet.js
 
-3. app.js
+3. module_export
+   - app.js imported a file and a whole directory.
    - Import from a file:
      - math.js
    - Import the whole directory:
      - pets (with index.js as main file)
+
+4. npm
+   - Install npm packages in Jokester directory.
+   - index.js (in same dir as packages installed) will print colored random joke.
