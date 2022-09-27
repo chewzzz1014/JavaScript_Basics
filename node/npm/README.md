@@ -1,9 +1,22 @@
 ## Overview
 
+1. Jokester
 - Install npm package, [give-me-a-joke](https://www.npmjs.com/package/give-me-a-joke) and [colors](https://www.npmjs.com/package/colors) in Jokester directory.
 
-- Jokester directory contains index.js that uses both installed package to print colored random joke.
+- Contains index.js that uses both installed package to print colored random joke.
 
 
 ![image](https://user-images.githubusercontent.com/92832451/192471368-1c9e0e2a-7d54-48ef-bac4-af7a9cefc18e.png)
 
+
+2. Artster
+   - Make a new project using command
+
+   ```
+   npm init
+   ```
+
+   - Add package `figlet` and `colors` as dependencies (refer package.json)
+   - Will print colored figlet text
+
+   
