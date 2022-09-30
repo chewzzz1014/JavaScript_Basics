@@ -2,15 +2,17 @@ const express = require("express")
 const path = require("path")
 const app = express()
 const { v4: uuid } = require("uuid");
+const methodOverride = require("method-override")
 
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(methodOverride("_method"));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-const comments = [
+let comments = [
     {
         id: uuid(),
         username: "Todd",
@@ -43,7 +45,7 @@ app.get("/comments", (req, res) => {
     res.render("comments/index", { comments })
 })
 
-// display form
+// display form to add comment
 app.get("/comments/new", (req, res) => {
     res.render("comments/new");
 })
@@ -70,6 +72,20 @@ app.patch("/comments/:id", (req, res) => {
     res.redirect("/comments");
 })
 
+
+app.get("/comments/:id/edit", (req, res) => {
+    const { id } = req.params;
+    const comment = comments.find(c => c.id === id);
+    res.render("comments/edit", { comment });
+})
+
+
+// delete request 
+app.delete("/comments/:id/", (req, res) => {
+    const { id } = req.params;
+    comments = comments.filter(c => c.id !== id);
+    res.redirect("/comments");
+})
 
 app.get("/tacos", (req, res) => {
     res.send("GET /tacos response");
