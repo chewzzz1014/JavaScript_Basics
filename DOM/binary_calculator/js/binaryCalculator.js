@@ -50,22 +50,21 @@ eql.addEventListener("click", function(e){
     let arr = [], result="none";
     if (p.includes("+")){
         arr = p.split("+");
-        result = arr[0].toString(2) + arr[1].toString(2);
+        result = parseInt(arr[0], 2) + parseInt(arr[1], 2)
     }
     else if (p.includes("-")){
         arr = p.split("-");
-        result = arr[0].toString(2) - arr[1].toString(2);
+        result = parseInt(arr[0], 2) - parseInt(arr[1], 2)
     }
     else if (p.includes("*")){
         arr = p.split("*");
-        result = arr[0].charCodeAt(0).toString(2) * arr[1].charCodeAt(0).toString(2);
+        result = parseInt(arr[0], 2) * parseInt(arr[1], 2)
     }
    else if (p.includes("/")){
         arr = p.split("/");
-        result = arr[0].toString(2) / arr[1].toString(2);
+        result = parseInt(arr[0], 2) / parseInt(arr[1], 2)
     }
-    
-    res.innerText = result;
+
+    res.innerText = result.toString(2);
     p = "";
 })
-
