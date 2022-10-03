@@ -28,3 +28,20 @@ matStr.match(bgRegex);
 let jennyStr = "Jenny8675309";
 let myRegex = /[a-z0-9]/ig;
 jennyStr.match(myRegex);
+
+
+// To create a negated character set, you place a caret character (^) after the opening bracket and before the characters you do not want to match.
+
+// For example, /[^aeiou]/gi matches all characters that are not a vowel
+
+// matches all characters that are not a number or a vowel
+let quoteSample = "3 blind mice.";
+let myRegex = /[^aeiou0-9]/ig;
+let result = quoteSample.match(myRegex);
+
+
+// + to match a character (or group of characters) that appears one or more times in a row.
+// find matches when the letter s occurs one or more times
+let difficultSpelling = "Mississippi";
+let myRegex = /s+/ig;
+let result = difficultSpelling.match(myRegex);
