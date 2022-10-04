@@ -10,12 +10,20 @@ mongoose.connect('mongodb://localhost:27017/movieApp', { useNewUrlParser: true }
     })
 
 
-// main().catch(err => console.log(err));
+// degine schema
+const movieSchema = new mongoose.Schema({
+    title: String,
+    year: Number,
+    score: Number,
+    rating: Number
+})
 
-// async function main() {
-//     await mongoose.connect('mongodb://localhost:27017/movieApp');
-//     console.log("YEAGGGG");
-//     // use `await mongoose.connect('mongodb://user:password@localhost:27017/test');` if your database has auth enabled
-// }
+// create a model from the created schema 
+// Movie is a class
+// collection name is movies
+const Movie = mongoose.model("Movie", movieSchema);
+
+// make new instance of movie
+const burning = new Movie({ title: "Burning", year: 2017, score: 9.6, rating: 9.9 });
 
 
