@@ -38,4 +38,4 @@ Movie.insertMany([
 ])
     .then(data => {
         console.log("INSERTED", data);
-    })
+    });
