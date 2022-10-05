@@ -64,6 +64,14 @@ productSchema.methods.addCategories = function (newCat) {
     return this.save();
 }
 
+// static methods
+productSchema.statics.fireSale = function () {
+    // "this" refers to Product 
+    return this.updateMany({}, { onSale: true, price: 0 })
+}
+
+
+
 // create a model 
 const Product = mongoose.model("Product", productSchema);
 
@@ -77,32 +85,36 @@ const findProduct = async () => {
     console.log(foundProduct);
 }
 
+
 findProduct();
+// calling static method
+Product.fireSale().then(res => console.log(res));
+
 
 // create instance of Product
-// const bike = new Product({ name: "Cycling Jersey", price: 28.50, categories: ["Cycling"], size: "XS" });
+const bike = new Product({ name: "Cycling Jersey", price: 28.50, categories: ["Cycling"], size: "XS" });
 
-// // // save
-// bike.save()
-//     .then(data => {
-//         console.log("We got...");
-//         console.log(data);
-//     })
-//     .catch(err => {
-//         console.log("We got error!");
-//         console.log(err);
-//     })
+//save
+bike.save()
+    .then(data => {
+        console.log("We got...");
+        console.log(data);
+    })
+    .catch(err => {
+        console.log("We got error!");
+        console.log(err);
+    })
 
 
-// // new: true so that it show the updated data
-// // by default, the inserted data will not follow schema validation. By setting "runValidators: true", the inserted value will follow the validation too.
-// Product.findOneAndUpdate({ name: "Tire Pump" }, { price: -10.99 }, { new: true, runValidators: true })
-//     .then(data => {
-//         console.log("We got...");
-//         console.log(data);
-//     })
-//     .catch(err => {
-//         console.log("We got error!");
-//         console.log(err);
-//     })
+// new: true so that it show the updated data
+// by default, the inserted data will not follow schema validation. By setting "runValidators: true", the inserted value will follow the validation too.
+Product.findOneAndUpdate({ name: "Tire Pump" }, { price: -10.99 }, { new: true, runValidators: true })
+    .then(data => {
+        console.log("We got...");
+        console.log(data);
+    })
+    .catch(err => {
+        console.log("We got error!");
+        console.log(err);
+    })
 
