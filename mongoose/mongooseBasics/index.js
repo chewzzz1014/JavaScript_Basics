@@ -33,9 +33,14 @@ Movie.insertMany([
     { title: "Amelia", year: 2001, score: 8.3, rating: "R" },
     { title: "Alien", year: 1979, score: 8.1, rating: "R" },
     { title: "The Iron Giant", year: 1999, score: 7.5, rating: "PG" },
-    { title: "Standy by Me", year: 1986, score: 7.3, rating: "R" },
+    { title: "Stand by Me", year: 1986, score: 7.3, rating: "R" },
     { title: "Moonrise Kingdom", year: 2012, score: 7.3, rating: "PG-13" }
 ])
     .then(data => {
         console.log("INSERTED", data);
     });
+
+// to load model to mongo and save changes to "burning"
+// In node repl:
+//  .load index.js
+//  burning.save()
