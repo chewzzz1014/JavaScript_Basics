@@ -20,7 +20,8 @@ const productSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: true,
-        min: 0
+        // minimum price and error message
+        min: [0, "Price must be positive!!"]
     },
     onSale: {
         type: Boolean,
@@ -40,6 +41,11 @@ const productSchema = new mongoose.Schema({
             type: Number,
             default: 0
         }
+    },
+    size: {
+        type: String,
+        // must be any of the values in enum
+        enum: ["S", "M", "L"]
     }
 })
 
@@ -47,9 +53,9 @@ const productSchema = new mongoose.Schema({
 const Product = mongoose.model("Product", productSchema);
 
 // create instance of Product
-const bike = new Product({ name: "Bike Helmet", price: 19.50, categories: ["Cycling", "Safety"], qty: { online: 10, inStore: 15 } });
+const bike = new Product({ name: "Cycling Jersey", price: 28.50, categories: ["Cycling"], size: "XS" });
 
-// save 
+// // save 
 bike.save()
     .then(data => {
         console.log("We got...");
@@ -59,4 +65,17 @@ bike.save()
         console.log("We got error!");
         console.log(err);
     })
+
+
+// new: true so that it show the updated data
+// by default, the inserted data will not follow schema validation. By setting "runValidators: true", the inserted value will follow the validation too.
+// Product.findOneAndUpdate({ name: "Tire Pump" }, { price: -10.99 }, { new: true, runValidators: true })
+//     .then(data => {
+//         console.log("We got...");
+//         console.log(data);
+//     })
+//     .catch(err => {
+//         console.log("We got error!");
+//         console.log(err);
+//     })
 
