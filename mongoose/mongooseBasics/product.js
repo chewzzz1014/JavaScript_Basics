@@ -69,13 +69,13 @@ bike.save()
 
 // new: true so that it show the updated data
 // by default, the inserted data will not follow schema validation. By setting "runValidators: true", the inserted value will follow the validation too.
-// Product.findOneAndUpdate({ name: "Tire Pump" }, { price: -10.99 }, { new: true, runValidators: true })
-//     .then(data => {
-//         console.log("We got...");
-//         console.log(data);
-//     })
-//     .catch(err => {
-//         console.log("We got error!");
-//         console.log(err);
-//     })
+Product.findOneAndUpdate({ name: "Tire Pump" }, { price: -10.99 }, { new: true, runValidators: true })
+    .then(data => {
+        console.log("We got...");
+        console.log(data);
+    })
+    .catch(err => {
+        console.log("We got error!");
+        console.log(err);
+    })
 
