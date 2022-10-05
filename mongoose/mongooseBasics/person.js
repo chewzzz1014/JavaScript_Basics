@@ -20,5 +20,14 @@ personSchema.virtual("fullName").
     });
 
 
+// middleware: function to be ran before or after making changes
+personSchema.pre("save", async function () {
+    this.first = "YO";
+    this.last = "MAMA";
+    console.log("ABOUT TO Save!!");
+})
+personSchema.post("save", async function () {
+    console.log("Just saved!!");
+})
 
 const Person = mongoose.model("Person", personSchema);
