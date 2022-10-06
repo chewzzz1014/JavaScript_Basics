@@ -21,9 +21,11 @@
 
         <label for="category">Product Category</label>
         <select name="category" id="category">
-            <option value="fruit">Fruit</option>
-            <option value="vegetable">Vegetable</option>
-            <option value="dairy">Dairy</option>
+            <% for (let cat of categories){ %>
+                <option value="<%=cat%>">
+                    <%= cat %>
+                </option>
+                <% } %>
         </select>
         <br>
 
