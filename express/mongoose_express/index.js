@@ -1,3 +1,7 @@
+function titleCase(str) {
+    return str[0].toUpperCase() + str.slice(1);
+}
+
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
@@ -30,8 +34,15 @@ app.get("/products/new", (req, res) => {
 })
 
 app.get("/products", async (req, res) => {
-    const products = await Product.find({})
-    res.render("products/index", { products });
+    const { category } = req.query;
+    if (category) {
+        const products = await Product.find({ category: category });
+        res.render("products/index", { products, category: titleCase(category) });
+    }
+    else {
+        const products = await Product.find({})
+        res.render("products/index", { products, category: "All" });
+    }
 })
 
 app.post("/products", async (req, res) => {
