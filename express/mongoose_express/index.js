@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
+const methodOverride = require("method-override");
 const app = express();
 
 // import mongoose model
@@ -19,6 +20,7 @@ mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 // app.use(express.static(path.join(__dirname, "/public")));
 
 // display form
@@ -35,14 +37,25 @@ app.post("/products", async (req, res) => {
     const n = new Product(req.body)
     await n.save();
     console.log(n);
-    res.send("....");
-
+    res.redirect(`/products/${n._id}`);
 })
 
 app.get("/products/:id", async (req, res) => {
     const { id } = req.params;
     const product = await Product.findById(id);
     res.render("products/show", { product });
+})
+
+app.get("/products/:id/edit", async (req, res) => {
+    const { id } = req.params;
+    const product = await Product.findById(id);
+    res.render("products/edit", { product })
+})
+
+app.put("/products/:id", async (req, res) => {
+    const { id } = req.params;
+    const product = await Product.findByIdAndDelete(id, req.body, { runValidators: true, new: true });
+    res.redirect(`/products/${product._id}`);
 })
 
 app.listen(3000, () => {
