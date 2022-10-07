@@ -10,9 +10,17 @@ Versions of the npm packages in the dependencies section of your package.json fi
 - The PATCH version should increment when you make backwards-compatible bug fixes. This means that PATCHes are bug fixes and MINORs add new features but neither of them break what worked before. 
 - Finally, MAJORs add changes that won’t work with earlier versions.
 
+## ~ ^
 ```
-"package": "MAJOR.MINOR.PATCH"
+"package": "^MAJOR.MINOR.PATCH"
 ```
 
 - `~` allow an npm dependency to update to the latest PATCH version
+
+```
+"package": "^MAJOR.MINOR.PATCH"
+```
+
+- `^` (caret) allows npm to install future updates for both MINOR updates and PATCHes. 
+
 
