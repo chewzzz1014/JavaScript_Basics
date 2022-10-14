@@ -1,34 +1,64 @@
-const express = require("express");
-const morgan = require("morgan");
+const express = require('express');
 const app = express();
+const morgan = require('morgan');
 
-// check if the password passed by user is correct (authentication)
-const verifyPassword = function (req, res, next) {
+
+app.use(morgan('tiny'));
+
+app.use((req, res, next) => {
+    req.requestTime = Date.now();
+    console.log(req.method, req.path);
+    next();
+})
+
+app.use('/dogs', (req, res, next) => {
+    console.log("I LOVE DOGS!!")
+    next();
+})
+
+const verifyPassword = (req, res, next) => {
     const { password } = req.query;
-
-    // did not pass password
-    if (!password) {
-        res.send("Sorry you need a password");
+    if (password === 'chickennugget') {
+        next();
     }
-
-    // passed password
-    else {
-        if (password === "chickennugget") {
-            next();
-        }
-        else {
-            res.send("Incorrect Password!");
-        }
-    }
-
+    res.send("YOU NEED A PASSWORD!")
 }
 
-// middleware chaining
-app.get("/secret", verifyPassword, (req, res) => {
-    res.send("Secret: Earth is not flat");
+
+// app.use((req, res, next) => {
+//     console.log("THIS IS MY FIRST MIDDLEWARE!!!")
+//     return next();
+//     console.log("THIS IS MY FIRST MIDDLEWARE - AFTER CALLING NEXT()")
+// })
+// app.use((req, res, next) => {
+//     console.log("THIS IS MY SECOND MIDDLEWARE!!!")
+//     return next();
+// })
+// app.use((req, res, next) => {
+//     console.log("THIS IS MY THIRD MIDDLEWARE!!!")
+//     return next();
+// })
+
+
+app.get('/', (req, res) => {
+    console.log(`REQUEST DATE: ${req.requestTime}`)
+    res.send('HOME PAGE!')
+})
+
+app.get('/dogs', (req, res) => {
+    console.log(`REQUEST DATE: ${req.requestTime}`)
+    res.send('WOOF WOOF!')
+})
+
+app.get('/secret', verifyPassword, (req, res) => {
+    res.send('MY SECRET IS: Sometimes I wear headphones in public so I dont have to talk to anyone')
+})
+
+app.use((req, res) => {
+    res.status(404).send('NOT FOUND!')
 })
 
 
 app.listen(3000, () => {
-    console.log("Listening at Port 3000");
+    console.log('App is running on localhost:3000')
 })
