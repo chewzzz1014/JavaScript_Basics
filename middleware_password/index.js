@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const AppError = require("./AppError");
 
 
 app.use(morgan('tiny'));
@@ -21,7 +22,8 @@ const verifyPassword = (req, res, next) => {
     if (password === 'chickennugget') {
         next();
     }
-    res.send("YOU NEED A PASSWORD!")
+    // res.send("YOU NEED A PASSWORD!")
+    throw new AppError("Password Required", 401);
 }
 
 
@@ -45,6 +47,10 @@ app.get('/', (req, res) => {
     res.send('HOME PAGE!')
 })
 
+app.get("/error", (req, res) => {
+    chicken.fly();
+})
+
 app.get('/dogs', (req, res) => {
     console.log(`REQUEST DATE: ${req.requestTime}`)
     res.send('WOOF WOOF!')
@@ -58,6 +64,21 @@ app.use((req, res) => {
     res.status(404).send('NOT FOUND!')
 })
 
+
+// error handling middleware
+// params: err, req, res, next
+// put at the most bottom
+app.use((err, req, res, next) => {
+    console.log("**************************************************************************");
+    console.log("**************************ERROR************************************");
+    console.log("**************************************************************************");
+    console.log(err);
+
+    // res.status(500).send("We got an error");
+
+    // pass to next error handler middleware
+    next(err);
+})
 
 app.listen(3000, () => {
     console.log('App is running on localhost:3000')
