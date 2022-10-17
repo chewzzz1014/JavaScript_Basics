@@ -77,9 +77,11 @@ app.all("*", (req, res, next) => {
 })
 
 // error handler middleware
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
     const { statusCode = 500, messsge = "Something went wrong" } = err;
-    res.status(statusCode).send(messsge);
+    if (!err.messsge)
+        err.messsge = 'Oh no. Something went wrong...';
+    res.status(statusCode).render("error", { err });
 })
 
 app.listen(3000, () => {
