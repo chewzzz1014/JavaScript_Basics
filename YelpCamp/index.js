@@ -7,6 +7,7 @@ const methodOverride = require("method-override")
 const ejsMate = require("ejs-mate");
 const { nextTick } = require("process");
 const catchAsync = require("./utils/catchAsync")
+const ExpressError = require("./utils/ExpressError");
 const app = express();
 
 app.engine("ejs", ejsMate);
@@ -47,7 +48,8 @@ app.get("/campgrounds/:id", async (req, res) => {
     res.render("campgrounds/show", { campground });
 })
 app.post("/campgrounds", catchAsync(async (req, res, next) => {
-
+    if (!req.body.campground)
+        throw new ExpressError("Invalid Campground Data", 400);
     // catch asynchronous error
     const campground = new Campground(req.body.campground);
     await campground.save();
@@ -70,9 +72,14 @@ app.delete("/campgrounds/:id", catchAsync(async (req, res) => {
     res.redirect("/campgrounds");
 }))
 
+app.all("*", (req, res, next) => {
+    next(new ExpressError("Page not found", 404));
+})
+
 // error handler middleware
 app.use((err, req, res) => {
-    res.send("Something went wrong...")
+    const { statusCode = 500, messsge = "Something went wrong" } = err;
+    res.status(statusCode).send(messsge);
 })
 
 app.listen(3000, () => {
