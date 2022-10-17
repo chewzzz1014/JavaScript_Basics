@@ -1,15 +1,15 @@
 <% layout('layouts/boilerplate') %>
     <h1>Edit Campground</h1>
-    <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
+    <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST" class="validated-form" novalidate>
         <div>
             <!-- title will be nested under campground -->
             <label for="title">Title</label>
-            <input type="text" id="title" name="campground[title]" value="<%= campground.title %>">
+            <input type="text" id="title" name="campground[title]" value="<%= campground.title %>" required>
         </div>
         <div>
             <!-- location will be nested under campground -->
             <label for="location">Location</label>
-            <input type="text" id="location" name="campground[location]" value="<%= campground.location %>">
+            <input type="text" id="location" name="campground[location]" value="<%= campground.location %>" required>
         </div>
         <br>
         <button>Edit Campground</button>
