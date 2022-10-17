@@ -5,6 +5,7 @@ const path = require("path");
 const Campground = require("./models/campground")
 const methodOverride = require("method-override")
 const ejsMate = require("ejs-mate");
+const { nextTick } = require("process");
 const app = express();
 
 app.engine("ejs", ejsMate);
@@ -46,10 +47,16 @@ app.get("/campgrounds/:id", async (req, res) => {
     const campground = await Campground.findById(id);
     res.render("campgrounds/show", { campground });
 })
-app.post("/campgrounds", async (req, res) => {
-    const campground = new Campground(req.body.campground);
-    await campground.save();
-    res.redirect(`/campgrounds/${campground._id}`)
+app.post("/campgrounds", async (req, res, next) => {
+
+    // catch asynchronous error
+    try {
+        const campground = new Campground(req.body.campground);
+        await campground.save();
+        res.redirect(`/campgrounds/${campground._id}`)
+    } catch (err) {
+        next(err);
+    }
 })
 app.get("/campgrounds/:id/edit", async (req, res) => {
     const { id } = req.params;
@@ -66,6 +73,12 @@ app.delete("/campgrounds/:id", async (req, res) => {
     await Campground.findByIdAndDelete(id);
     res.redirect("/campgrounds");
 })
+
+// error handler middleware
+app.use((err, req, res) => {
+    res.send("Something went wrong...")
+})
+
 app.listen(3000, () => {
     console.log("Listening on Port 3000.");
 })
