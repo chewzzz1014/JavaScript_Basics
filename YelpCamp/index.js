@@ -6,8 +6,11 @@ const Campground = require("./models/campground")
 const methodOverride = require("method-override")
 const ejsMate = require("ejs-mate");
 const { nextTick } = require("process");
+// error handling
 const catchAsync = require("./utils/catchAsync")
 const ExpressError = require("./utils/ExpressError");
+// schema validators
+const Joi = require("joi");
 const app = express();
 
 app.engine("ejs", ejsMate);
@@ -47,9 +50,33 @@ app.get("/campgrounds/:id", async (req, res) => {
     const campground = await Campground.findById(id);
     res.render("campgrounds/show", { campground });
 })
+
+
 app.post("/campgrounds", catchAsync(async (req, res, next) => {
-    if (!req.body.campground)
-        throw new ExpressError("Invalid Campground Data", 400);
+    // if (!req.body.campground)
+    //     throw new ExpressError("Invalid Campground Data", 400);
+
+    // joi schema
+    // validate data before save to mongoose
+    // title, name is nested inside campground
+    const campgroundSchema = Joi.object({
+        campground: Joi.object({
+            title: Joi.string().required(),
+            price: Joi.number().required().min(0),
+            image: Joi.string().required(),
+            location: Joi.string().required(),
+            description: Joi.string().required()
+        }).required()
+    })
+
+    // pass validation schema
+    const { error } = campgroundSchema.validate(req.body);
+    // if there's error in validation
+    if (error) {
+        const msg = error.details.map(ele => ele.message.join(", "))
+        throw new ExpressError(msg, 400);
+    }
+
     // catch asynchronous error
     const campground = new Campground(req.body.campground);
     await campground.save();
