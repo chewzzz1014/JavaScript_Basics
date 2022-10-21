@@ -24,6 +24,7 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
+// one to few relationship. A user may have one or more addresses
 const makeUser = async () => {
     const u = new User({
         first: "Harry",
@@ -55,4 +56,6 @@ const addAddress = async (id) => {
     console.log(res);
 }
 
-makeUser();
+// makeUser();
+
+addAddress("63525a5ea268bce0ed913d66");
