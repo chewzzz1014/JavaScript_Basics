@@ -57,6 +57,10 @@ const addProduct = async () => {
     console.log(farm);
 }
 
-addProduct();
+// addProduct();
+
+Farm.findOne({ name: "Farm Fresh UPM" })
+    .populate("products")   // show products info instead of their id 
+    .then(farm => console.log(farm));
 
 
