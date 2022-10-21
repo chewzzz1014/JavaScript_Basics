@@ -10,7 +10,7 @@ mongoose.connect("mongodb://localhost:27017/relationshipDB", { useNewUrlParser: 
 
 
 // one to many relationship. 
-// store data seperately but store references to document ID's somewhere inside the parent
+// store data seperately but store references to document ID's somewhere inside the parent (store reference of child to parent)
 
 const productSchema = new Schema({
     name: String,
