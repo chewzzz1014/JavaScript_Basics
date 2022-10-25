@@ -15,6 +15,10 @@ const productSchema = new mongoose.Schema({
         // convert to lowercase
         lowercase: true,
         enum: ["fruit", "vegetable", "dairy"]
+    },
+    farm: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Farm"
     }
 });
 
