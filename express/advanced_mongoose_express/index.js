@@ -48,6 +48,12 @@ app.post("/farms", async (req, res, next) => {
     res.redirect("/farms");
 })
 
+app.get("/farms/:id", async (req, res, next) => {
+    const { id } = req.params;
+    const farm = await Farm.findById(id);
+    res.render("farms/show", { farm });
+})
+
 
 ////////////////////////// PRODUCT ROUTE/////////////////////////////////////
 // display form
