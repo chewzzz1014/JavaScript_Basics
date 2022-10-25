@@ -10,6 +10,7 @@ const app = express();
 
 // import mongoose model
 const Product = require("./models/product");
+const Farm = require("./models/farm");
 
 const categories = ["fruit", "vegetable", "dairy"];
 
@@ -28,6 +29,27 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 // app.use(express.static(path.join(__dirname, "/public")));
 
+
+////////////////////////// FARM ROUTE/////////////////////////////////////
+
+app.get("/farms", async (req, res) => {
+    const farms = await Farm.find({});
+    res.render("farms/index", { farms });
+})
+
+app.get("/farms/new", (req, res) => {
+    res.render("farms/new")
+})
+
+app.post("/farms", async (req, res, next) => {
+    //const { name, city, email } = req.body;
+    const farm = new Farm(req.body);
+    await farm.save();
+    res.redirect("/farms");
+})
+
+
+////////////////////////// PRODUCT ROUTE/////////////////////////////////////
 // display form
 app.get("/products/new", (req, res) => {
     res.render("products/new", { categories });

@@ -1,14 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-mongoose.connect("mongodb://localhost:27017/relationshipDB", { useNewUrlParser: true }).then(() => {
-    console.log(('Mongo connection open'));
-}).catch(err => {
-    console.log("Mongo connection error");
-    console.log(err);
-})
-
-
 // one to many relationship. 
 // store data seperately but store references to document ID's somewhere inside the parent (store reference of child to parent)
 
@@ -33,6 +25,8 @@ const farmSchema = new Schema({
 });
 
 const Farm = mongoose.model("Farm", farmSchema);
+
+module.exports = Farm;
 
 
 
