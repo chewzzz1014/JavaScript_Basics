@@ -61,7 +61,7 @@ app.get("/farms/:id/products/new", async (req, res) => {
     res.render("products/new", { categories, farm });
 })
 
-app.post("/farms/:id/products", async (req, res, next) => {
+app.post("/farms/:id/products", async (req, res) => {
     const product = new Product(req.body);
     const { id } = req.params;    // farm id 
 
@@ -72,7 +72,12 @@ app.post("/farms/:id/products", async (req, res, next) => {
     await farm.save();
     await product.save();
 
-    res.redirect(`farms/${farm._id}`);
+    res.redirect(`/farms/${farm._id}`);
+})
+
+app.delete("/farms/:id", async (req, res) => {
+    const farm = await Farm.findByIdAndDelete(req.params.id);
+    res.redirect("/farms");
 })
 
 ////////////////////////// PRODUCT ROUTE/////////////////////////////////////

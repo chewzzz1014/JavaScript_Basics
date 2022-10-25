@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Product = require("./product")
 const Schema = mongoose.Schema;
 
 // one to many relationship. 
@@ -23,6 +24,23 @@ const farmSchema = new Schema({
         }
     ]
 });
+
+// delete also all products associate with the deleted farm
+// using mongoose middleware
+farmSchema.pre("findOneAndDelete", async function (data) {
+    console.log("pre middleware");
+})
+
+farmSchema.post("findOneAndDelete", async function (farm) {
+    // if the farm was deleted
+    // delete all products that their ids are in farm.products
+    if (farm.products.length) {
+        const res = await Product.deleteMany({ _id: { $in: farm.products } });
+        console.log(res);
+    }
+    console.log("post middleware");
+    console.log(farm);
+})
 
 const Farm = mongoose.model("Farm", farmSchema);
 
