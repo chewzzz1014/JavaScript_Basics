@@ -13,7 +13,7 @@ const ExpressError = require("./utils/ExpressError");
 // schema validators
 const Joi = require("joi");
 // declared joi schema
-const { campgroundSchema } = require("./schemas");
+const { campgroundSchema, reviewSchema } = require("./schemas");
 const app = express();
 
 app.engine("ejs", ejsMate);
@@ -44,6 +44,16 @@ const validateCampground = (req, res, next) => {
     // pass validation schema
     const { error } = campgroundSchema.validate(req.body);
     // if there's error in validation
+    if (error) {
+        const msg = error.details.map(ele => ele.message).join(",");
+        throw new ExpressError(msg, 400);
+    } else {
+        next();
+    }
+}
+
+const validateReview = (req, res, next) => {
+    const { error } = reviewSchema.validate(req.body);
     if (error) {
         const msg = error.details.map(ele => ele.message).join(",");
         throw new ExpressError(msg, 400);
@@ -96,7 +106,7 @@ app.delete("/campgrounds/:id", catchAsync(async (req, res) => {
     res.redirect("/campgrounds");
 }))
 
-app.post("/campgrounds/:id/reviews", catchAsync(async (req, res) => {
+app.post("/campgrounds/:id/reviews", validateReview, catchAsync(async (req, res) => {
     const campground = await Campground.findById(req.params.id);
     const review = new Review(req.body.review);
     campground.reviews.push(review);
