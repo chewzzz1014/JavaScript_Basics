@@ -1,7 +1,14 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const app = express();
 
+app.use(cookieParser());
+
 app.get("/greet", (req, res) => {
+    // grab what's inside the cookie
+    const { name, animal } = req.cookies;
+    //console.log(req.cookies)
+
     res.send("Hey there")
 })
 
