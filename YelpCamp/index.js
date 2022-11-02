@@ -5,15 +5,9 @@ const path = require("path");
 const methodOverride = require("method-override")
 const ejsMate = require("ejs-mate");
 const { nextTick } = require("process");
-const Review = require("./models/review");
-const { campgroundSchema, reviewSchema } = require("./schemas");
 const ExpressError = require("./utils/ExpressError");
-const catchAsync = require("./utils/catchAsync")
-// routes
-const Campground = require("./models/campground")
-// schema validators
-const Joi = require("joi");
 const campgrounds = require("./routes/campgrounds")
+const reviews = require("./routes/reviews")
 const app = express();
 
 app.engine("ejs", ejsMate);
@@ -37,40 +31,13 @@ db.once("open", () => {
     console.log("Database Connected");
 });
 
-const validateReview = (req, res, next) => {
-    const { error } = reviewSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map(ele => ele.message).join(",");
-        throw new ExpressError(msg, 400);
-    } else {
-        next();
-    }
-}
 
 app.use("/campgrounds", campgrounds);
+app.use("/campgrounds", reviews);
 
 app.get("/", (req, res) => {
     res.render("home")
 })
-
-app.post("/campgrounds/:id/reviews", validateReview, catchAsync(async (req, res) => {
-    const campground = await Campground.findById(req.params.id);
-    const review = new Review(req.body.review);
-    campground.reviews.push(review);
-    await review.save();
-    await campground.save();
-    res.redirect(`/campgrounds/${campground._id}`);
-}))
-
-
-app.delete("/campgrounds/:id/reviews/:reviewId", catchAsync(async (req, res, next) => {
-
-    const { id, reviewId } = req.params;
-
-    await Campground.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
-    await Review.findByIdAndDelete(reviewId);
-    res.redirect(`/campgrounds/${id}`);
-}))
 
 app.all("*", (req, res, next) => {
     next(new ExpressError("Page not found", 404));

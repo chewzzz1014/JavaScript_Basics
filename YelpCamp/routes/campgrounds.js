@@ -6,7 +6,7 @@ const Review = require("../models/review");
 // schema validators
 const Joi = require("joi");
 // declared joi schema
-const { campgroundSchema, reviewSchema } = require("../schemas");
+const { campgroundSchema } = require("../schemas");
 const router = express.Router();
 
 
@@ -17,16 +17,6 @@ const validateCampground = (req, res, next) => {
     if (error) {
         const msg = error.details.map(ele => ele.message).join(",");
         console.log(req.body.campground)
-        throw new ExpressError(msg, 400);
-    } else {
-        next();
-    }
-}
-
-const validateReview = (req, res, next) => {
-    const { error } = reviewSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map(ele => ele.message).join(",");
         throw new ExpressError(msg, 400);
     } else {
         next();
