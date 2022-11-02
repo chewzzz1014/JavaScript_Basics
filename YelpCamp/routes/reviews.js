@@ -4,7 +4,10 @@ const catchAsync = require("../utils/catchAsync")
 const Campground = require("../models/campground")
 const Review = require("../models/review")
 const ExpressError = require("../utils/ExpressError");
-const router = express.Router();
+
+// by default will not pass params together with route
+// mergeParams will merge params and route so that we can access them here
+const router = express.Router({ mergeParams: true });
 
 
 const validateReview = (req, res, next) => {
@@ -17,7 +20,7 @@ const validateReview = (req, res, next) => {
     }
 }
 
-router.post("/:id/reviews", validateReview, catchAsync(async (req, res) => {
+router.post("/", validateReview, catchAsync(async (req, res) => {
     const campground = await Campground.findById(req.params.id);
     const review = new Review(req.body.review);
     campground.reviews.push(review);
@@ -27,7 +30,7 @@ router.post("/:id/reviews", validateReview, catchAsync(async (req, res) => {
 }))
 
 
-router.delete("/:id/reviews/:reviewId", catchAsync(async (req, res, next) => {
+router.delete("/:reviewId", catchAsync(async (req, res, next) => {
 
     const { id, reviewId } = req.params;
 

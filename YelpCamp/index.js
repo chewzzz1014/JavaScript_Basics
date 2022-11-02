@@ -33,7 +33,7 @@ db.once("open", () => {
 
 
 app.use("/campgrounds", campgrounds);
-app.use("/campgrounds", reviews);
+app.use("/campgrounds/:id/reviews", reviews);
 
 app.get("/", (req, res) => {
     res.render("home")
