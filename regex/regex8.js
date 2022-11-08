@@ -23,3 +23,10 @@ repeatStr.match(repeatRegex); // Returns ["row row row", "row"]
 // catch same number that repeated thrice
 let repeatNum = "42 42 42";
 let reRegex = /^(\d+) \1 \1$/;
+
+
+// remove leading and trailing whitespaces
+let hello = "   Hello, World!  ";
+let wsRegex = /^\s+|\s+$/; // Change this line
+let result = hello.replace(wsRegex, ''); // Change this line
+console.log(result) //Hello, World!
