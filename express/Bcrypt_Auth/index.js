@@ -38,6 +38,14 @@ app.post('/register', async (req, res) => {
     res.redirect('/')
 })
 
+app.get('/login', (req, res) => {
+    res.render('login')
+})
+
+app.post('/login', (req, res) => {
+    res.send(req.body)
+})
+
 app.get('/secret', (req, res) => {
     res.send('This is a secret!')
 })
