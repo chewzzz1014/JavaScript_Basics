@@ -1,4 +1,5 @@
 const express = require('express')
+const session = require("express-session")
 const mongoose = require('mongoose')
 const User = require('./models/user')
 const path = require('path')
@@ -6,6 +7,7 @@ const bcrypt = require('bcrypt')
 
 const app = express();
 
+app.use(session({ secret: 'mysecret' }))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }))
@@ -35,6 +37,7 @@ app.post('/register', async (req, res) => {
     })
 
     await user.save();
+    req.session.user_id = user._id;
     res.redirect('/')
 })
 
@@ -47,14 +50,21 @@ app.post('/login', async (req, res) => {
     const foundUser = await User.findOne({ username: username })
     const is_valid_password = await bcrypt.compare(password, foundUser.password)
     if (is_valid_password) {
-        res.send("Welcome!! :)")
+        // set user session
+        req.session.user_id = foundUser._id
+
+        res.redirect('/secret')
     } else {
-        res.send('Try again')
+        res.redirect('/login')
     }
 })
 
 app.get('/secret', (req, res) => {
-    res.send('This is a secret!')
+    // if user is logged in
+    if (!req.session.user_id) {
+        res.redirect("/login")
+    }
+    res.send('This is a secret! For authenticated user only huhuhu')
 })
 
 app.listen(3000, () => {
