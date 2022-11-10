@@ -12,4 +12,13 @@ const hashPassword = async (pw) => {
     console.log('Hashed Password: ' + hash)
 }
 
-hashPassword('12345');
+const login = async (pw, hashedPw) => {
+    const result = await bcrypt.compare(pw, hashedPw)
+    if (result)
+        console.log('Successful! Logging you in...')
+    else
+        console.log('Incorrect password :(')
+}
+
+//hashPassword('12345');
+login('12345', '$2b$10$bvMDNcclE6joaQ5YWZvKie8a2ejoa7FeOfjl.0yGD7f0JPDTrkcs6')
