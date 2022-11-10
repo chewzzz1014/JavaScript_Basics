@@ -59,12 +59,22 @@ app.post('/login', async (req, res) => {
     }
 })
 
+app.post('/logout', (req, res) => {
+    // remove user session
+    //req.session.user_id = null;
+
+    // destroy the whole session (all properties in req.session)
+    req.session.destroy();
+
+    res.redirect("/login")
+})
+
 app.get('/secret', (req, res) => {
     // if user is logged in
     if (!req.session.user_id) {
         res.redirect("/login")
     }
-    res.send('This is a secret! For authenticated user only huhuhu')
+    res.render('secret')
 })
 
 app.listen(3000, () => {
