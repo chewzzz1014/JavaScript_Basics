@@ -9,6 +9,14 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
+mongoose.connect('mongodb://localhost:27017/authDemo', { useNewUrlParser: true })
+    .then(() => {
+        console.log("mongo connection open");
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+
 app.get('/register', (req, res) => {
     res.render('register')
 })
