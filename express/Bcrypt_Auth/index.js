@@ -42,8 +42,15 @@ app.get('/login', (req, res) => {
     res.render('login')
 })
 
-app.post('/login', (req, res) => {
-    res.send(req.body)
+app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+    const foundUser = await User.findOne({ username: username })
+    const is_valid_password = await bcrypt.compare(password, foundUser.password)
+    if (is_valid_password) {
+        res.send("Welcome!! :)")
+    } else {
+        res.send('Try again')
+    }
 })
 
 app.get('/secret', (req, res) => {
