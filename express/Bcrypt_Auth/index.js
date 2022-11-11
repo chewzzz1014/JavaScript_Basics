@@ -55,9 +55,10 @@ app.get('/login', (req, res) => {
 
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
-    const foundUser = await User.findOne({ username: username })
-    const is_valid_password = await bcrypt.compare(password, foundUser.password)
-    if (is_valid_password) {
+
+    const foundUser = await User.findAndValidate(username, password)
+
+    if (foundUser) {
         // set user session
         req.session.user_id = foundUser._id
 
