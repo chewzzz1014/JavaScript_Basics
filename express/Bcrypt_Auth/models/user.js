@@ -21,4 +21,15 @@ userSchema.statics.findAndValidate = async function (username, password) {
     return (is_valid_password) ? foundUser : false
 }
 
+// run this before save an instance of User
+userSchema.pre('save', async function (next) {
+    // if the password is not been modified
+    if (!this.isModified('password'))
+        return next()
+
+    this.password = await bcrypt.hash(this.password, 12)
+    // next() is save()
+    next();
+})
+
 module.exports = mongoose.model('User', userSchema)

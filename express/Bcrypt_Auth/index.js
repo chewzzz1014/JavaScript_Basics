@@ -38,10 +38,10 @@ app.get('/register', (req, res) => {
 
 app.post('/register', async (req, res) => {
     const { username, password } = req.body;
-    const hashedPw = await bcrypt.hash(password, 12)
+
     const user = new User({
-        username: username,
-        password: hashedPw
+        username,
+        password
     })
 
     await user.save();
