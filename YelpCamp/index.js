@@ -10,6 +10,9 @@ const { nextTick } = require("process");
 const ExpressError = require("./utils/ExpressError");
 const campgrounds = require("./routes/campgrounds")
 const reviews = require("./routes/reviews")
+const passport = require("passport")
+const LocalStrategy = require("passport-local")
+const User = require("./models/user")
 const app = express();
 
 app.engine("ejs", ejsMate);
@@ -50,12 +53,25 @@ db.once("open", () => {
     console.log("Database Connected");
 });
 
+app.use(passport.initialize())
+app.use(passport.session())
+passport.use(new LocalStrategy(User.authenticate()))
+
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
+
 // middleware that handles flash
 app.use((req, res, next) => {
     // pass the flash message to the locals of res
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     next();
+})
+
+app.get("/fakeUser", async (req, res) => {
+    const user = new User({ email: "qwert@my.com", username: 'chewzzz' })
+    const newUser = await User.register(user, '12345')
+    res.send(newUser);
 })
 
 app.use("/campgrounds", campgrounds);
