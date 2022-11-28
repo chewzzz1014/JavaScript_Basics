@@ -1,5 +1,7 @@
 # JavaScript_Basics
 
+Learning vanila JavaScript and frameworks.Topics include basic syntax, OOP, regex, asynchronous etc. Also include my starting code of learning AJAX, node, mongoose and express.
+
 Learning Resources:
  - [javascript.info](javascript.info)
  - [Beginner's Series to: JavaScript](https://docs.microsoft.com/en-us/shows/beginners-series-to-javascript/?wt.mc_id=beginner-c9-niner) by Microsoft Learn
