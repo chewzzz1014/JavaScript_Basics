@@ -1,3 +1,13 @@
+## npm Commands
+1. `npm --v or npm --version`
+    - Check npm version
+
+2. `npm i <packageName>`
+    - Local dependency that use it only in this particular project.
+
+3. `npm i -g <packageName>`
+    - Global dependency that use it in any project.
+
 ## Overview
 
 1. Jokester
@@ -18,5 +28,3 @@
 
    - Add package `figlet` and `colors` as dependencies (refer package.json)
    - Will print colored figlet text
-
-   
