@@ -8,6 +8,11 @@
 3. `npm i -g <packageName>`
     - Global dependency that use it in any project.
 
+4. `npm i -D <packageName>` or `npm i --save-dev <packageName>`
+    - Dev dependencies. Package that we use while developing the application.
+
+5. `npm uninstall <packageName>`
+    - Uninstall package
 ## Overview
 
 1. Jokester
