@@ -15,4 +15,20 @@
      - Exit the shell
 
 ## Querying
-   - 
+
+### Create Collection
+    ```
+    db.<collection name>
+
+    # example
+    db.books
+    ```
+### Insert Values into Collection
+    - Create a new collection if doesn't exist
+
+    ```
+    # example
+    db.books.insertOne({title: "Burning", author: "xyzz", pages: 300, rating: 7, genres: ["mystery", "horror"]})
+    ```
+
+###
