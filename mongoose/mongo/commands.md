@@ -127,3 +127,14 @@
         }
     })
     ```
+
+
+    ```
+    $or: OR operator
+
+    db.books.find({
+        $or: [
+            {rating: 7}, {rating: 9}
+        ]
+    })
+    ```
