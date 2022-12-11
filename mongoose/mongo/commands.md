@@ -37,4 +37,19 @@
     ])
     ```
 
-###
+### Find
+    ```
+    # find all documents and output first 20 documents
+    db.books.find()
+
+    # find with 1 condition
+    db.books.find({
+        author: "Terry Pratchett"
+    })
+
+    # find with more than 1 conditions
+    db.books.find({
+        author: "Terry Pratchett",
+        rating: 4
+    })
+    ```
