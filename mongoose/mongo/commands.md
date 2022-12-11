@@ -1,19 +1,20 @@
 # Mongo Shell Commands
 
-## show dbs
-   - Show all database on the local mongo server
+## Basic Navigation
+   - show dbs
+      - Show all database on the local mongo server
 
-## use <db name>
-   - Switch to a database. Create new one if it doesn't exist
+    - use <db name>
+      - Switch to a database. Create new one if it doesn't exist
 
-## show collections
-   - Show all collections in a database.
+    -show collections
+     - Show all collections in a database.
 
-## db
-   - Show current database
+    - db
+      - Show current database
 
-## cls
-   - Clear screen
+    - cls
+      - Clear screen
 
-## exit
-   - Exit the shell
+    - exit
+      - Exit the shell
