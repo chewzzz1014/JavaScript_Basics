@@ -88,3 +88,22 @@
 
     db.books.find().sort({title: 1})
     ```
+
+## Nested Document
+    ```
+    # an example of nested document
+    db.books.insertOne({
+        title: 'The Way of Kings', 
+        author: 'Brendon Sanderson', 
+        rating: 9,
+        pages: 400, 
+        genres: ['fantasy'], 
+        reviews: [
+            {name: 'chewzzz', body: 'lorem lpusm hahahaha'}, 
+            {name: 'mario', body: 'soso'}
+        ] 
+    })
+    ```
+
+    ```
+    ```
