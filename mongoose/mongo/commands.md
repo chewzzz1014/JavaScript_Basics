@@ -11,3 +11,9 @@
 
 ## db
    - Show current database
+
+## cls
+   - Clear screen
+
+## exit
+   - Exit the shell
