@@ -105,5 +105,25 @@
     })
     ```
 
+## Operator
     ```
+    $gt: greater than
+    $gte: greater than or equal
+
+    db.books.find({
+        rating: {
+            $gt: 7
+        }
+    })
+    ```
+
+    ```
+    $lt: less than
+    $lte: less than or equal
+
+    db.books.find({
+        rating: {
+            $lt: 7
+        }
+    })
     ```
