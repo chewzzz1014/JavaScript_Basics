@@ -31,9 +31,9 @@
     db.books.insertOne({title: "Burning", author: "xyzz", pages: 300, rating: 7, genres: ["mystery", "horror"]})
 
     # multiple values
-    db.authors.insertMany([
-        {name: 'John', age: 30},
-        {name: 'zxcxc', age: 20}
+    db.books.insertMany([
+        {title: 'The Light Fantastic', author: 'Terry Pratchett', pages: 250, rating: 6, genres: ['fantasy']}, 
+        {title: 'Dune', author: 'Frank Herbert', pages: 500, rating: 10, genres: ['sci-fi', 'dystopian']}
     ])
     ```
 
