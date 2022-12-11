@@ -67,3 +67,24 @@
 
     db.books.find({}, {author: 1, title: 1})
     ```
+
+## Method Chaining
+    ```
+    # count after find
+    # count amount of documents returned
+    db.books.find({}).count()
+
+    ```
+
+    ```
+    # limit number of documents returned
+    db.books.find().limit(3)
+    ```
+
+    ```
+    # sort the result returned
+    # 1: sort in ascending order
+    # -1: sort in descending order
+
+    db.books.find().sort({title: 1})
+    ```
