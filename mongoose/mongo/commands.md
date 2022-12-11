@@ -42,6 +42,11 @@
     # find all documents and output first 20 documents
     db.books.find()
 
+    # find one result only
+    db.books.findOne({
+        author: "Terry Pratchett"
+    })
+
     # find with 1 condition
     db.books.find({
         author: "Terry Pratchett"
@@ -52,4 +57,13 @@
         author: "Terry Pratchett",
         rating: 4
     })
+    ```
+
+    ```
+    # specify fields that the result returned
+    db.books.find({author: "Terry Pratchett"},
+        {title: 1, author: 1}
+    )
+
+    db.books.find({}, {author: 1, title: 1})
     ```
