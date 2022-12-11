@@ -23,12 +23,18 @@
     # example
     db.books
     ```
-### Insert Values into Collection
+### Insert Value(s) into Collection
     - Create a new collection if doesn't exist
 
     ```
-    # example
+    # one value
     db.books.insertOne({title: "Burning", author: "xyzz", pages: 300, rating: 7, genres: ["mystery", "horror"]})
+
+    # multiple values
+    db.authors.insertMany([
+        {name: 'John', age: 30},
+        {name: 'zxcxc', age: 20}
+    ])
     ```
 
 ###
