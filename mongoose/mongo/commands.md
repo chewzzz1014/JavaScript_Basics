@@ -190,3 +190,18 @@ db.books.find({
     "reviews.name": "chewzzz"
 })
 ```
+
+## Delete Document
+```
+# delete one
+db.books.deleteOne({
+    _id: ObjectId('...')
+})
+```
+
+```
+# delete many
+db.books.deleteMany({
+    author: '...'
+})
+```
