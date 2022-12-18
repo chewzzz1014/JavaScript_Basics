@@ -17,16 +17,14 @@
 ## Querying
 
 ### Create Collection
-    ```
+    
     db.<collection name>
 
     # example
     db.books
-    ```
-### Insert Value(s) into Collection
+### Insert Value(s) into Collection 
     - Create a new collection if doesn't exist
 
-    ```
     # one value
     db.books.insertOne({title: "Burning", author: "xyzz", pages: 300, rating: 7, genres: ["mystery", "horror"]})
 
@@ -35,7 +33,7 @@
         {title: 'The Light Fantastic', author: 'Terry Pratchett', pages: 250, rating: 6, genres: ['fantasy']}, 
         {title: 'Dune', author: 'Frank Herbert', pages: 500, rating: 10, genres: ['sci-fi', 'dystopian']}
     ])
-    ```
+    
 
 ### Find
     ```
@@ -136,5 +134,21 @@
         $or: [
             {rating: 7}, {rating: 9}
         ]
+    })
+    ```
+
+    ```
+    $in: In operator
+    
+    db.books.find({
+        rating: {$in: [7, 8, 9]}
+    })
+    ```
+
+    ```
+    $nin: Not In operator
+
+    db.books.find({
+        rating: {$nin: [7, 8, 9]}
     })
     ```
