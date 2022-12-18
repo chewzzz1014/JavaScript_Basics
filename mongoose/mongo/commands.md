@@ -36,7 +36,7 @@
     
 
 ### Find
-    ```
+```
     # find all documents and output first 20 documents
     db.books.find()
 
@@ -55,40 +55,40 @@
         author: "Terry Pratchett",
         rating: 4
     })
-    ```
+```
 
-    ```
+```
     # specify fields that the result returned
     db.books.find({author: "Terry Pratchett"},
         {title: 1, author: 1}
     )
 
     db.books.find({}, {author: 1, title: 1})
-    ```
+```
 
 ## Method Chaining
-    ```
+```
     # count after find
     # count amount of documents returned
     db.books.find({}).count()
 
-    ```
+```
 
-    ```
+```
     # limit number of documents returned
     db.books.find().limit(3)
-    ```
+```
 
-    ```
+```
     # sort the result returned
     # 1: sort in ascending order
     # -1: sort in descending order
 
     db.books.find().sort({title: 1})
-    ```
+```
 
 ## Nested Document
-    ```
+```
     # an example of nested document
     db.books.insertOne({
         title: 'The Way of Kings', 
@@ -101,10 +101,10 @@
             {name: 'mario', body: 'soso'}
         ] 
     })
-    ```
+```
 
 ## Operator
-    ```
+```
     $gt: greater than
     $gte: greater than or equal
 
@@ -113,9 +113,9 @@
             $gt: 7
         }
     })
-    ```
+```
 
-    ```
+```
     $lt: less than
     $lte: less than or equal
 
@@ -124,10 +124,10 @@
             $lt: 7
         }
     })
-    ```
+```
 
 
-    ```
+```
     $or: OR operator
 
     db.books.find({
@@ -135,20 +135,58 @@
             {rating: 7}, {rating: 9}
         ]
     })
-    ```
+```
 
-    ```
+```
     $in: In operator
     
     db.books.find({
         rating: {$in: [7, 8, 9]}
     })
-    ```
+```
 
-    ```
+```
     $nin: Not In operator
 
     db.books.find({
         rating: {$nin: [7, 8, 9]}
     })
-    ```
+```
+
+
+## Querying Arrays
+```
+# 'target' value is in the array
+db.books.find({
+    <array fieldname>: <target>
+})
+```
+
+```
+# 'target' value is the only value in the array
+db.books.find({
+    <array fieldname>: [<target>]
+})
+```
+
+```
+# array has at least the mentioned values
+
+db.books.find({
+    genres: {
+        $all: [
+            'sci-fi',
+            'fantasy'
+        ]
+    }
+})
+```
+
+## Querying Nested Document
+- Let reviews be a nested document inside book document
+
+```
+db.books.find({
+    "reviews.name": "chewzzz"
+})
+```
