@@ -205,3 +205,32 @@ db.books.deleteMany({
     author: '...'
 })
 ```
+
+## Update Document
+
+
+```
+# update
+db.books.updateOne({conditions}, {$set: {
+    ...
+}})
+
+# example
+db.books.updateOne({
+    _id: ObjectId('....')
+}, {
+    $set:{
+        rating: 8,
+        pages: 8
+    }
+})
+
+# pull value from array
+db.books.updateOne({
+    _id: ObjectId('...')
+}, {
+    $pull: {
+        {genres: 'fantasy'}
+    }
+})
+```
