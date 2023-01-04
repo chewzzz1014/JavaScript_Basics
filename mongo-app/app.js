@@ -6,6 +6,8 @@ const app = express()
 // database returned from connection
 let db
 
+app.use(express.json())
+
 // connect to db
 connectToDb((e) => {
     if (!e) {
@@ -41,6 +43,18 @@ app.get('/books/:id', async (req, res) => {
         }
     } else {
         res.status(400).json('Invalid ID format')
+    }
+})
+
+app.post('/books', async (req, res) => {
+    const book = req.body
+
+
+    try {
+        const result = await db.collection('books').insertOne(book)
+        res.status(201).json(result)
+    } catch (error) {
+        res.status(500).json(error)
     }
 })
 
