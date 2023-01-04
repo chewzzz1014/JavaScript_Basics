@@ -29,15 +29,18 @@ app.get('/books', async (req, res) => {
 
 app.get('/books/:id', async (req, res) => {
     const { id } = req.params
-    try {
-        if (ObjectId.isValid(id)) {
+    if (ObjectId.isValid(id)) {
+        try {
             const foundBook = await db.collection('books').findOne({ _id: ObjectId(id) })
-            res.status(200).json(foundBook)
-        } else {
-            res.status(400).json('Invalid ID format')
+            if (!foundBook)
+                res.status(404).json('Document Not Found')
+            else
+                res.status(200).json(foundBook)
+        } catch (error) {
+            res.status(400).json(error)
         }
-    } catch (error) {
-        res.status(500).json(error)
+    } else {
+        res.status(400).json('Invalid ID format')
     }
 })
 
