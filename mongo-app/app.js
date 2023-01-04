@@ -1,4 +1,4 @@
-const { ObjectID } = require('mongodb')
+const { ObjectId } = require('mongodb')
 const express = require('express')
 const { connectToDb, getDb } = require('./db')
 const app = express()
@@ -21,23 +21,23 @@ app.get('/books', async (req, res) => {
             .sort({ author: 1 })
             .forEach(b => allBooks.push(b))
 
-        res.status(200).json({
-            allBooks
-        })
+        res.status(200).json(allBooks)
     } catch (error) {
-        res.status(500).json({
-            error
-        })
+        res.status(500).json(error)
     }
 })
 
 app.get('/books/:id', async (req, res) => {
     const { id } = req.params
     try {
-        const foundBook = await db.collection('books').findOne({ _id: ObjectID(id) })
-        res.status(200).json({ foundBook })
+        if (ObjectId.isValid(id)) {
+            const foundBook = await db.collection('books').findOne({ _id: ObjectId(id) })
+            res.status(200).json(foundBook)
+        } else {
+            res.status(400).json('Invalid ID format')
+        }
     } catch (error) {
-        res.status(500).json({ error })
+        res.status(500).json(error)
     }
 })
 
