@@ -1,8 +1,20 @@
 const express = require('express')
+const { connectToDb, getDb } = require('./db')
 const app = express()
 
-app.get('/', (req, res) => {
-    res.send('Hii')
+let db
+
+// connect to db
+connectToDb((e) => {
+    if (!e) {
+        db = getDb()
+    }
+})
+
+app.get('/books', (req, res) => {
+    res.json({
+        msg: 'welcome to api'
+    })
 })
 
 app.listen(3000, () => {
