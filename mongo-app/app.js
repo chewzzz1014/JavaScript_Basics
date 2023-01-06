@@ -49,12 +49,25 @@ app.get('/books/:id', async (req, res) => {
 app.post('/books', async (req, res) => {
     const book = req.body
 
-
     try {
         const result = await db.collection('books').insertOne(book)
         res.status(201).json(result)
     } catch (error) {
         res.status(500).json(error)
+    }
+})
+
+app.delete('/books/:id', async (req, res) => {
+    if (ObjectId.isValid(req.params.id)) {
+        try {
+            const result = await db.collection('books').deleteOne({ _id: ObjectId(req.params.id) })
+            res.status(200).json(result)
+
+        } catch (error) {
+            res.status(400).json(error)
+        }
+    } else {
+        res.status(400).json('Invalid ID format')
     }
 })
 
