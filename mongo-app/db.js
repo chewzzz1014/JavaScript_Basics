@@ -1,4 +1,5 @@
 const { MongoClient } = require('mongodb')
+require('dotenv').config()
 
 let dbConnection
 
@@ -6,7 +7,7 @@ const connectToDb = async (cb) => {
     // local mongodb 
     // connect dbs of name bookstore
     try {
-        const client = await MongoClient.connect('mongodb://localhost:27017/bookstore')
+        const client = await MongoClient.connect(process.env.MONGO_URI)
         dbConnection = client.db()
         return cb()
     } catch (error) {
