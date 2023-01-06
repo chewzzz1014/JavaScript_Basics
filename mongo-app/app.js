@@ -39,7 +39,7 @@ app.get('/books/:id', async (req, res) => {
             else
                 res.status(200).json(foundBook)
         } catch (error) {
-            res.status(400).json(error)
+            res.status(500).json(error)
         }
     } else {
         res.status(400).json('Invalid ID format')
@@ -64,7 +64,22 @@ app.delete('/books/:id', async (req, res) => {
             res.status(200).json(result)
 
         } catch (error) {
-            res.status(400).json(error)
+            res.status(500).json(error)
+        }
+    } else {
+        res.status(400).json('Invalid ID format')
+    }
+})
+
+app.patch('/books/:id', async (req, res) => {
+    if (ObjectId.isValid(req.params.id)) {
+        try {
+            const updates = req.body
+            const result = await db.collection('books')
+                .updateOne({ _id: ObjectId(req.params.id) }, { $set: updates })
+            res.status(200).json(result)
+        } catch (error) {
+            res.status(500).json(error)
         }
     } else {
         res.status(400).json('Invalid ID format')
