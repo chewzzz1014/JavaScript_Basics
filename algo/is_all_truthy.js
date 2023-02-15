@@ -5,6 +5,7 @@ In other words, you are given an array collection of objects. The predicate pre 
 */
 
 function truthCheck(collection, pre) {
+    let result = true
 
     // 2 possibilities:
     // A. It's an object, it has the property and the value is truthy
@@ -13,10 +14,10 @@ function truthCheck(collection, pre) {
         if (typeof ele === 'object' && ele.hasOwnProperty(pre) && ele[pre] || ele[pre])
             return;
         else
-            return false
+            result = false
     })
 
-    return true
+    return result
 }
 
 truthCheck([{ name: "Quincy", role: "Founder", isBot: false }, { name: "Naomi", role: "", isBot: false }, { name: "Camperbot", role: "Bot", isBot: true }], "isBot");
