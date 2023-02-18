@@ -3,7 +3,7 @@
 // object constructor
 const obj1 = new Object()
 
-// // create new object by passing prototype object as param
+// create new object by passing prototype object as param
 const obj2 = Object.create(null)
 
 // object literal
@@ -41,4 +41,14 @@ function invite(g1, g2) {
 // call: call(`this` that the function referring to, arg1, arg2...)
 invite.call(employee1, 'Hello', 'Yooo') // Hello New Jeans, Yooo
 invite.call(employee2, 'Hello', 'Yooo') // Hello The Cat, Yooo
+
+// apply: apply(`this` that the function referring to, [arg1, arg2...])
+invite.apply(employee1, ['Hello', 'How are you?']) // Hello New Jeans, Yooo
+invite.apply(employee2, ['Hello', 'How are you?']) // Hello The Cat, Yooo
+
+// bind: bind(`this` that the function referring to)
+const inviteE1 = invite.bind(employee1)
+const inviteE2 = invite.bind(employee2)
+
+
 
