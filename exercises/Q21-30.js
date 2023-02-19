@@ -42,3 +42,27 @@ console.log(addition(20))
     Fetching from cache...
     40
  */
+
+
+// Q25: Hoisting
+// use variables before they are used
+// only hoists declaration, not initialisation
+console.log(h1) // undefined (can't hoist initialisation)
+var h1 = 'yoyoyoyyoyo'
+
+
+// Q26: Classes in ES6
+// syntactic sugar over JavaScript's existing prototype-based inheritance
+class Bike {
+    constructor(color, model) {
+        this.color = color
+        this.model = model
+    }
+
+    getDetails() {
+        return `${this.model} bike has ${this.color} color.`
+    }
+}
+
+
+// Q27: Closures
