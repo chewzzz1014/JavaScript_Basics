@@ -78,3 +78,15 @@ function Welcome(name) {
 var myFunc = Welcome('chewzzz')
 myFunc('Welcome')
 myFunc('Helloooo')
+
+
+// Q28: Modules
+// small, independent resuable code
+
+
+// Q29: Why need module?
+// maintainability, reusability, namespacing
+
+
+// Q30: Scope
+// accessibility of variables, functions and onjects 
