@@ -66,3 +66,15 @@ class Bike {
 
 
 // Q27: Closures
+// combination of function & lexical env within the function declaration
+// 3 scope chains: own scope (vars defined between curly brackets), outer function's vars and global vars
+function Welcome(name) {
+    var greetingInfo = function (msg) { // has access to outer function's scope after outer function has returned
+        console.log(msg + ' ' + name)
+    }
+    return greetingInfo
+}
+
+var myFunc = Welcome('chewzzz')
+myFunc('Welcome')
+myFunc('Helloooo')
