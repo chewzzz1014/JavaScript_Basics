@@ -83,3 +83,7 @@ w.terminate()
 
 // resued the web worker
 w = undefined
+
+
+// Q50: restrictions of web workers on DOM
+// web workers dont have access to window object, document object and parent object (since web worker are defined in an external files)
