@@ -27,3 +27,59 @@ let data = sessionStorage.getItem('key')
 sessionStorage.removeItem('key')
 // remove all data
 sessionStorage.clear()
+
+
+// Q45: storage event & event handler
+// storage event is an event that fires when a storage area has been changes in the context of another documents
+// onstorage is event handler for processing storage events
+window.onstorage = function (e) {
+    console.log(`The ${e.key} key has been changed from ${e.oldValue} to ${e.newValue}`)
+}
+
+
+// Q46: Why web storage?
+/**
+ * 1. More secure
+ * 2. Can store large amounts of data locally
+ * 3. Info is never transferred to server
+ */
+
+
+// Q47 & Q48: How to check the web storage/web worker browser support?
+if (typeof (Storage) !== 'undefined') {
+    // code for localStorage/sessionStorage
+} else {
+    // no web storage support
+}
+
+if (typeof (Worker) !== 'undefined') {
+    // code for web worker support
+} else {
+    // no web worker support
+}
+
+
+// Q49: Examples of web worker
+
+let i = 0
+function timedCount() {
+    i = i + 1
+    postMessage(i) // post a message back to HTML page
+    setTimeout('timedCount()', 500)
+}
+timedCount()
+
+if (typeof (w) == 'undefined') {
+    w = new Worker('counter.js') // create a new web worker object if browser doesn't support web worker
+}
+
+// receive messages from web worker
+w.onmessage = function (event) {
+    document.getElementById('message').innerHTML = event.data
+}
+
+// terminate web worker (stop listen for message)
+w.terminate()
+
+// resued the web worker
+w = undefined
