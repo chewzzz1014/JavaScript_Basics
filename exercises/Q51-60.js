@@ -51,4 +51,15 @@ secondFunc()
 // First function
 
 
-// Q56: 
+// Q56: Callback hell
+// multiple nested callbacks 
+// example:
+async1(function () {
+    async2(function () {
+        async3(function () {
+            async4(function () {
+                //...
+            })
+        })
+    })
+})
