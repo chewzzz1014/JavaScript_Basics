@@ -36,6 +36,7 @@ outerFunc(callbackFunc)
 
 // Q55: Why need callback?
 // JS will keep executing while listening for other events
+// to make sure that certain code dont execute until other code finished execution
 function firstFunc() {
     setTimeout(() => console.log('First function...'), 1000)
 }
