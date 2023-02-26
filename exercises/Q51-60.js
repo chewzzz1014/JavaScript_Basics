@@ -79,3 +79,17 @@ if (typeof (EventSource) !== 'undefined') {
         document.getElementById('output').innerHTML += e.data + '<br>'
     }
 }
+
+
+// Q59: Check browser support for server-sent events
+if (typeof (EventSource) !== 'undefined') {
+    // server-sent events supported
+} else {
+    // server-sent events not supported
+}
+
+
+// Q60: Events available for server sent events
+// onopen: when a connection to server is opened
+// onmessage: when a message is received
+// onerror: when an error occurs
