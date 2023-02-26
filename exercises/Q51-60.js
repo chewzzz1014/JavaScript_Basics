@@ -69,3 +69,13 @@ async1(function () {
 // server push technilogy
 // enables browser to receive automatic updates from a server via HTTP connection w/o resorting to polling
 // one way communication channel: from server to client only
+
+
+// Q58: Receive server-sent notifications
+// EventSource object is used to receive server-sent event notifactions
+if (typeof (EventSource) !== 'undefined') {
+    let source = new EventSource('sse_generator.js')
+    source.onmessage = function (e) {
+        document.getElementById('output').innerHTML += e.data + '<br>'
+    }
+}
