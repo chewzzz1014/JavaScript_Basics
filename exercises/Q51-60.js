@@ -63,3 +63,9 @@ async1(function () {
         })
     })
 })
+
+
+// Q57: Server-sent events (SSE)
+// server push technilogy
+// enables browser to receive automatic updates from a server via HTTP connection w/o resorting to polling
+// one way communication channel: from server to client only
