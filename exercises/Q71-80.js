@@ -26,5 +26,27 @@
 console.log(eval('1 + 2')) // 3
 
 
-// 
+// Q76: window VS document
+/**
+ * window:
+ *  - root level in webpage
+ *  - window object is available implicitlt in page
+ *  - example of method: alert(), confirm()
+ * 
+ * document:
+ *  - direct child of window object (DOM)
+ *  - access via window.document or document
+ *  - example of method: getElementById, getElementByTagName, createElement
+ */
+
+
+// Q77: Access history
+// window.object contains browser history
+// load previous and back URLs in history using back() and next()
+function goBack() {
+    window.history.back()
+}
+function goForward() {
+    window.history.forward()
+}
 
