@@ -65,4 +65,14 @@ function hasCapsLock(e) {
 isNaN('Hello') // true
 isNaN('100') // false 
 
-// 
+
+// Q80: undeclared VS undefined variables
+/**
+ *   undeclared:
+ *    - variables not exist
+ *    - attempt to read the value of undeclared varibles returns runtime error
+ * 
+ *   undefined:
+ *    - declared varible has not assigned value
+ *    - attempt to read the value of undefined variable returns undefined 
+ * */ 
