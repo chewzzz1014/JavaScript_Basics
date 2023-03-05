@@ -56,6 +56,13 @@ function goForward() {
 // examples of modifier: CapsLock, ScrollLock, NumLock
 function hasCapsLock(e) {
     let flag = e.getModifierState('CapsLock')
-    flag ? console.log('CapsLock activated!') ? console.log('CapsLock not activated')
+    flag ? console.log('CapsLock activated!') : console.log('CapsLock not activated')
 }
 
+
+// Q79: isNaN
+// determine whether a value is an illegal number (Not a Number)
+isNaN('Hello') // true
+isNaN('100') // false 
+
+// 
