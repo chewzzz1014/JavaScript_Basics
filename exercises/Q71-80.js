@@ -50,3 +50,12 @@ function goForward() {
     window.history.forward()
 }
 
+
+// Q78: Detect modifier key
+// getModifierState(): return boolean value that indicates whether the specified modiefier key is activated or not
+// examples of modifier: CapsLock, ScrollLock, NumLock
+function hasCapsLock(e) {
+    let flag = e.getModifierState('CapsLock')
+    flag ? console.log('CapsLock activated!') ? console.log('CapsLock not activated')
+}
+
