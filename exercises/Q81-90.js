@@ -25,4 +25,4 @@ isFinite(-Infinity)
 // Types of event flow: Event Bubbling (bottom to top) and Event Capturing (top to bottom)
 
 // Q86: Event bubbling
-// 
+// Event propagation: event first trigger
