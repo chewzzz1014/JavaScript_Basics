@@ -9,3 +9,14 @@
 
 
 // Q93: Promises compare to callback
+// pros:
+/**
+ * 1. avoid callback hell
+ * 2. write sequential async code with .then()
+ * 3. write parallel async code with Promise.all()
+ * 4. solve common callback problems: calling callback too late, early, many times, swallow errors
+ */
+
+// cons
+// 1. complex
+// 2. need to load polyfill if ES6 is not supported
