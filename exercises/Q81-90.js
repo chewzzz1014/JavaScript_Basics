@@ -24,5 +24,25 @@ isFinite(-Infinity)
 // clicked an element nested in various other element => trigger click event for each of its parent elements => click reaches destination
 // Types of event flow: Event Bubbling (bottom to top) and Event Capturing (top to bottom)
 
+
 // Q86: Event bubbling
-// Event propagation: event first trigger
+// Event propagation: event trigger on innermost target element => event trigger on ancestors of target element till it reaches the outermost DOM element
+
+
+// Q87: Event capturing
+// Event propagation: event captured by outermost element => event trigger on descendent of target element till it reaches the innermost DOM element
+
+
+// Q88: Submit form using JS
+function submit() {
+    document.form[0].submit()
+}
+
+
+// Q89: browser's OS details
+console.log(navigator.platform)
+
+
+// Q90: document load VS DOMContentLoaded event
+// document load: fired when whole page has loaded, include all dependent resources
+// DOMContentLoaded: fired when initial HTML has been completely loaded and parsed w/o waiting for assets
