@@ -42,3 +42,14 @@ const prop = input.getAttribute('value')
 // Q97: is JS a compiled/interpreted language
 // interpreted language
 // interpreter reads JS code, interprets line by line and run it
+
+
+// Q98: JS is a case-sensitive language
+
+
+// Q99: no relation between Java and JS
+
+
+// Q100: Events
+// 'things' happen to HTML elements. JS react on events
+// examples: web page finished loading, input field was changed, button was clicked
