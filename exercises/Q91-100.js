@@ -35,3 +35,10 @@ const prop = input.getAttribute('value')
 // origin: combination of URI scheme, hostname, port number
 // prevents JS from making requests across domain boundaries
 // prevents malicious script on one page from obtaining access to sensitive data on another web page using DOM
+
+// Q96: Purpose of void 0
+
+
+// Q97: is JS a compiled/interpreted language
+// interpreted language
+// interpreter reads JS code, interprets line by line and run it
