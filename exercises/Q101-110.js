@@ -27,3 +27,17 @@ function secondFunc() {
     // will not be executed. Event bubbling is prevented
     alert('DIV 2')
 }
+
+
+// Q104: Steps in returning false usage
+/**
+ * 1. stop browser's default action
+ * 2. prevents action from propagating DOM
+ * 3. stops callback execution
+ */
+
+
+// Q105: BOM (Browser Object Model)
+// allows communication between JS and browser
+// consists of objec navigator, history, screen, location and document (which are children of window)
+// BOM is standardized and can be changed based on diff browsers
