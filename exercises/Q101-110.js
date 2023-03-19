@@ -41,3 +41,8 @@ function secondFunc() {
 // allows communication between JS and browser
 // consists of objec navigator, history, screen, location and document (which are children of window)
 // BOM is standardized and can be changed based on diff browsers
+
+
+// Q106: setTimeout
+// call function after specified number of ms
+setTimeout(() => console.log('Hello World'), 2000)
