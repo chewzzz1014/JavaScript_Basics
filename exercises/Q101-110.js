@@ -46,3 +46,8 @@ function secondFunc() {
 // Q106: setTimeout
 // call function after specified number of ms
 setTimeout(() => console.log('Hello World'), 2000)
+
+
+// Q107: setInterval
+// call function at specify interval in ms
+setInterval(function () { console.log('Hello World') })
