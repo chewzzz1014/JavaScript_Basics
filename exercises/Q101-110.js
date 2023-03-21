@@ -57,4 +57,14 @@ setInterval(function () { console.log('Hello World') })
 
 
 // Q109: Event delegation
-// listen to events by delegate
+// listen to events by delegate parent element as listener for all events happen inside it
+
+// to detect all changes inside the form
+let form = document.querySelector('#registration-form')
+form.addEventListener('input', function (e) {
+    console.log(e.target)
+})
+
+
+// Q110: ECMAScript
+// scripting language that forms the basis of JS
