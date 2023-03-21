@@ -51,3 +51,10 @@ setTimeout(() => console.log('Hello World'), 2000)
 // Q107: setInterval
 // call function at specify interval in ms
 setInterval(function () { console.log('Hello World') })
+
+
+// Q108: JS is a single threaded language
+
+
+// Q109: Event delegation
+// listen to events by delegate
