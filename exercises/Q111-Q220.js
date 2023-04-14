@@ -30,3 +30,5 @@ console.log(userJSON1)
 // sent to and from a server 
 
 
+// Q116: PWA (Progressive Web Application)
+// type of mobile app delivered through web
