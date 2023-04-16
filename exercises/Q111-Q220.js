@@ -42,6 +42,20 @@ function greeting() {
     alert('Good morning')
 }
 
-function start() {
+function startTimeout() {
     msg = setTimeout(greeting, 3000)
+}
+
+function stop() {
+    clearTimeout(msg)
+}
+
+// Q118: clearInterval
+// clear interval that set by setInterval()
+function startTimeout() {
+    msg = setInterval(greeting, 3000)
+}
+
+function stop() {
+    clearInterval(msg)
 }
