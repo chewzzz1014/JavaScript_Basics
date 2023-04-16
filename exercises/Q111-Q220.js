@@ -32,3 +32,16 @@ console.log(userJSON1)
 
 // Q116: PWA (Progressive Web Application)
 // type of mobile app delivered through web
+
+
+// Q117: clearTimeout
+// clear the timeout which had been set by setTimeout()
+// return value of setTimeout() is stored in var and passed into clearTimeout to clear the timer
+let msg
+function greeting() {
+    alert('Good morning')
+}
+
+function start() {
+    msg = setTimeout(greeting, 3000)
+}
