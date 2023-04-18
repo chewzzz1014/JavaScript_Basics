@@ -67,3 +67,15 @@ function redirect() {
     window.location.href = 'newPage.html'
 }
 
+
+// Q220: substring check
+let mainString = 'hello world'
+let subString = 'wor'
+
+// 1. includes()
+console.log(mainString.includes(subString))
+// 2. indexOf()
+console.log(mainString.indexOf(subString) !== -1)
+// 3. RegEx
+let myRegex = /wor/
+myRegex.text(mainString)
