@@ -59,3 +59,11 @@ function startTimeout() {
 function stop() {
     clearInterval(msg)
 }
+
+
+// Q119: redirect new page
+// using window's 'location' property
+function redirect() {
+    window.location.href = 'newPage.html'
+}
+
