@@ -20,3 +20,9 @@ const {
     search, 
     hash
 } = window.location
+
+
+// Q124: get query string values
+// example: get client code value from URL query string
+const urlParams = new URLSearchParams(window.location.search)
+const clientCode = urlParams.get('clientCode')
