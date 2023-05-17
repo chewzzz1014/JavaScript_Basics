@@ -1,5 +1,9 @@
 // Q121: validate email
 function validateEmail(email) {
-    var re = var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}/
+    var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return re.test(String(email).toLowerCase());
 }
+
+// Q122: get/change current url
+console.log('location.href', window.location.href); 
+window.location.hfef = 'google.com'
