@@ -26,3 +26,14 @@ const {
 // example: get client code value from URL query string
 const urlParams = new URLSearchParams(window.location.search)
 const clientCode = urlParams.get('clientCode')
+
+
+// Q125: check key exsits in object
+let me = {
+    name: 'chewzzz',
+    age: 21
+}
+console.log('age' in me) // using 'in' operator
+console.log(me.hasOwnProperty('age'))
+console.log(me.name !== undefined) // true
+console.log(me.nickName !== undefined) // false
