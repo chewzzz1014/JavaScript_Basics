@@ -37,3 +37,17 @@ console.log('age' in me) // using 'in' operator
 console.log(me.hasOwnProperty('age'))
 console.log(me.name !== undefined) // true
 console.log(me.nickName !== undefined) // false
+
+// Q126: loop or enumerate js object
+let object = {
+    k1: 'v1',
+    k2: 'v2',
+    k3: 'v3'
+}
+
+// loop through keys in object
+for (let key in object) {
+    if (object.hasOwnProperty(key)) {
+        console.log(`${key} -> ${object[key]}`)
+    }
+}
