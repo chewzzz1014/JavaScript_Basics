@@ -51,3 +51,21 @@ for (let key in object) {
         console.log(`${key} -> ${object[key]}`)
     }
 }
+
+
+// Q127: Empty object?
+// Object entries
+Object.entries(obj).length === 0 && obj.constructor === Object 
+
+// Object keys
+Object.keys(obj).length === 0 && obj.constructor === Object 
+
+// hasOwnProperty
+function isEmpty(obj) {
+    for (var prop in obj) {
+        if (obj.hasOwnProperty(prop)) {
+            return false;
+        }
+    }
+    return JSON.stringify(obj) === JSON.stringify({});
+}
