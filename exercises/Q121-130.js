@@ -69,3 +69,19 @@ function isEmpty(obj) {
     }
     return JSON.stringify(obj) === JSON.stringify({});
 }
+
+
+// Q128: argument object
+// Array-like object accessible inside function that contains values of arguments passed to the function
+// can't apply array methods, but it's iterable
+function sum() {
+    var total = 0;
+    for (var i = 0, len = arguments.length; i < len; ++i) {
+        total += arguments[i];
+    }
+    return total;
+}
+sum(1, 2, 3) // returns 6
+
+// convert it to array
+var argsArray = Array.prototype.slice.call(arguments);
