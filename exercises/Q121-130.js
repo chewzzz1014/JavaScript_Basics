@@ -85,3 +85,10 @@ sum(1, 2, 3) // returns 6
 
 // convert it to array
 var argsArray = Array.prototype.slice.call(arguments);
+
+
+// Q128: Make string title case
+function titleCase(str) {
+    return str[0].toUpperCase() + str.slice(1)
+}
+titleCase('hello')
