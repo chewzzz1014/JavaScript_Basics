@@ -14,4 +14,17 @@ console.log(d1 === d2); // False
 
 // Q133: check if a string starts with another string
 "Good morning".startsWith("Good"); // true
-"Good morning".startsWith("morning"); // fals
+"Good morning".startsWith("morning"); // false
+
+// Q134: trim string
+" Hello World ".trim(); //Hello World
+// if trim() is not supported
+if (!String.prototype.trim) {
+    (function () {
+        // Make sure we trim BOM and NBSP
+        var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+        String.prototype.trim = function () {
+            return this.replace(rtrim, '');
+        };
+    })();
+}
