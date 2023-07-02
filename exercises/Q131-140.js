@@ -28,3 +28,14 @@ if (!String.prototype.trim) {
         };
     })();
 }
+
+
+// Q135: add key value pair
+var object = {
+    key1: value1,
+    key2: value2
+};
+// dot notation
+object.key3 = "value3";
+// []
+object["key3"] = "value3";
