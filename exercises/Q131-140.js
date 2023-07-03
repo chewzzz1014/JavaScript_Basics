@@ -39,3 +39,9 @@ var object = {
 object.key3 = "value3";
 // []
 object["key3"] = "value3";
+
+
+// Q136: !--
+// combination of:
+// logical NOT, !
+// prefix decrement
