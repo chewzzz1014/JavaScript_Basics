@@ -45,3 +45,7 @@ object["key3"] = "value3";
 // combination of:
 // logical NOT, !
 // prefix decrement
+
+
+// Q137: variable default value
+var a = b || c; // assign c to b if b is falsy
