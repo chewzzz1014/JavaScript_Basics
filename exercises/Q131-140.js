@@ -49,3 +49,9 @@ object["key3"] = "value3";
 
 // Q137: variable default value
 var a = b || c; // assign c to b if b is falsy
+
+
+// Q138: multiline string
+var str = "This is a \
+very lengthy \
+sentence!";
