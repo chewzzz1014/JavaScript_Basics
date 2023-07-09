@@ -61,3 +61,12 @@ sentence!";
 reliably and instantly loads on your users' screens, similar to what you see in native applications.
 It is useful for getting some initial HTML to the screen fast without a network.
 */
+
+// Q140: function properties
+fn = function (x) {
+    //Function code goes here
+}
+fn.name = "John";
+fn.profile = function (y){
+    // profile code here
+}
